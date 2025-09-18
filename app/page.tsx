@@ -1,5 +1,5 @@
-import HomeContent from '@/components/HomeContent'
+import HomeContent from "@/components/HomeContent";
 
-export default function Home() {
-  return <HomeContent />
+export default async function Home() {
+  return <HomeContent />;
 }
