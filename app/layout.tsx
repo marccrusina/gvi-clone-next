@@ -1,19 +1,22 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next'
+import './globals.css'
+import TanstackProvider from './tanstack-query/provider'
 
 export const metadata: Metadata = {
-  title: "GVI Clone - NextJS",
-  description: "GVI clone that uses NextJS",
-};
+  title: 'GVI Clone - NextJS',
+  description: 'GVI clone that uses NextJS',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <TanstackProvider>{children}</TanstackProvider>
+      </body>
     </html>
-  );
+  )
 }
