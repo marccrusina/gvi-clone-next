@@ -31,7 +31,8 @@ class SimpleLogger {
 
     // Create a multi-line formatted log with proper labels
     const lines = [
-      `┌─ LOG ENTRY ──────────────────────────────────────────────`,
+      `LOG ENTRY`,
+      `┌───────────────────────────────────────────────`,
       `│ Timestamp: ${timestamp}`,
       `│ Level: ${level.toUpperCase()}`,
       `│ Context: ${this.context}`,
@@ -53,9 +54,7 @@ class SimpleLogger {
       })
     }
 
-    lines.push(
-      `└───────────────────────────────────────────────────────────────────`
-    )
+    lines.push(`└───────────────────────────────────────────────`)
 
     return lines.join('\n')
   }
