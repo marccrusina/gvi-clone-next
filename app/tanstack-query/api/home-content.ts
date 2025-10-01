@@ -7,11 +7,7 @@ export const homeContent = queryOptions({
     const url =
       'https://uat-api.grandvision.it/api/v1/cms/live/home/content/grand-vision/it/it?storeId=110201&langId=-4'
 
-    apiLogger.logApiCall(url, 'GET', {
-      storeId: '110201',
-      langId: '-4',
-      endpoint: 'home-content',
-    })
+    apiLogger.logApiCall(url, 'GET')
 
     const startTime = performance.now()
 
@@ -29,6 +25,7 @@ export const homeContent = queryOptions({
       const data = await response.json()
       apiLogger.logApiResponse(url, response.status, duration, {
         dataSize: JSON.stringify(data).length,
+        data: JSON.stringify(data),
       })
 
       return data

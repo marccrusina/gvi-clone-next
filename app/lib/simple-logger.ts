@@ -28,9 +28,36 @@ class SimpleLogger {
     const timestamp = this.isBrowser
       ? new Date().toISOString()
       : new Date().toISOString()
-    const contextStr = `[${this.context}]`
-    const metaStr = meta ? ` ${JSON.stringify(meta)}` : ''
-    return `${timestamp} ${level.toUpperCase()} ${contextStr} ${message}${metaStr}`
+
+    // Create a multi-line formatted log with proper labels
+    const lines = [
+      `┌─ LOG ENTRY ──────────────────────────────────────────────`,
+      `│ Timestamp: ${timestamp}`,
+      `│ Level: ${level.toUpperCase()}`,
+      `│ Context: ${this.context}`,
+      `│ Message: ${message}`,
+    ]
+
+    // Add meta information if present
+    if (meta && Object.keys(meta).length > 0) {
+      lines.push(`│ Meta:`)
+      Object.entries(meta).forEach(([key, value]) => {
+        const formattedValue =
+          typeof value === 'object'
+            ? JSON.stringify(value, null, 2)
+                .split('\n')
+                .map((line) => `│   ${line}`)
+                .join('\n')
+            : String(value)
+        lines.push(`│   ${key}: ${formattedValue}`)
+      })
+    }
+
+    lines.push(
+      `└───────────────────────────────────────────────────────────────────`
+    )
+
+    return lines.join('\n')
   }
 
   private log(level: string, message: string, meta?: LogMeta) {
@@ -162,6 +189,10 @@ class SimpleLogger {
       duration,
       ...meta,
     })
+  }
+
+  logComponentInfo(componentName: string, props?: LogMeta) {
+    this.info(`Component info: ${componentName}`, { props })
   }
 
   logComponentMount(componentName: string, props?: LogMeta) {
