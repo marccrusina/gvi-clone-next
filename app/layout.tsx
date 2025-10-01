@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import TanstackProvider from './tanstack-query/provider'
+import QueryProvider from './components/QueryProvider'
 
 export const metadata: Metadata = {
   title: 'GVI Clone - NextJS',
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <TanstackProvider>{children}</TanstackProvider>
+        <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
   )
