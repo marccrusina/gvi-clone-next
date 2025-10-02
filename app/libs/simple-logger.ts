@@ -180,7 +180,7 @@ class SimpleLogger {
 }
 
 // Factory function to create logger instances
-export const createLogger = (context: string) => new SimpleLogger(context)
+const createLogger = (context: string) => new SimpleLogger(context)
 
 // Global logger instances for common use cases
 export const apiLogger = createLogger('API')

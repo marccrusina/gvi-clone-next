@@ -2,11 +2,11 @@ import { makeAutoObservable, runInAction } from 'mobx'
 import { getQueryClient } from '@/tanstack-query/get-query-client'
 import { homeContent } from '@/tanstack-query/api/home-content'
 
-export interface HomeContentData {
+interface HomeContentData {
   [key: string]: unknown
 }
 
-export type ApiStatus = 'idle' | 'loading' | 'success' | 'error'
+type ApiStatus = 'idle' | 'loading' | 'success' | 'error'
 
 export class HomeContentStore {
   data: HomeContentData | null = null
@@ -85,7 +85,6 @@ export class HomeContentStore {
   invalidateAndRefetch = async () => {
     const queryClient = getQueryClient()
 
-    // Set loading state at the start (this will clear data)
     this.setLoading()
 
     try {

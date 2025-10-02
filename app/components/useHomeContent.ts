@@ -5,21 +5,13 @@ import { useEffect } from 'react'
 import { homeContent } from '@/tanstack-query/api/home-content'
 import { homeContentStore } from '@/stores/home-content-store'
 import { componentLogger } from '@/libs/simple-logger'
-import type { HomeContentData } from '@/stores/home-content-store'
 
 interface UseHomeContentOptions {
   componentName?: string
   enableLogging?: boolean
 }
 
-interface UseHomeContentReturn {
-  content: HomeContentData | null
-  error: Error | null
-}
-
-export const useHomeContent = (
-  options: UseHomeContentOptions = {}
-): UseHomeContentReturn => {
+export const useHomeContent = (options: UseHomeContentOptions = {}) => {
   const { componentName = 'HomeContent', enableLogging = true } = options
 
   // Use TanStack Query to trigger the fetch
@@ -48,9 +40,4 @@ export const useHomeContent = (
       })
     }
   }, [error, componentName, enableLogging])
-
-  return {
-    content: content ?? null,
-    error: error ?? null,
-  }
 }
