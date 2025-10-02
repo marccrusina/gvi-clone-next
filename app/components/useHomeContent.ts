@@ -25,34 +25,25 @@ export const useHomeContent = (
   // Use TanStack Query to trigger the fetch
   const { data: content, error } = useSuspenseQuery(homeContent)
 
-  // Sync store with TanStack Query data
+  // Sync store with TanStack Query data after successful fetch
   useEffect(() => {
     if (content) {
       homeContentStore.setSuccess(content)
     }
   }, [content])
 
-  // Sync store with TanStack Query error
+  // Sync store with TanStack Query error after failed fetch
   useEffect(() => {
     if (error) {
       homeContentStore.setError(error as Error)
     }
   }, [error])
 
-  // Log component mount
-  useEffect(() => {
-    if (enableLogging && typeof window !== 'undefined') {
-      componentLogger.logComponentMount(componentName, {
-        hasData: !!content,
-        dataKeys: content ? Object.keys(content) : [],
-      })
-    }
-  }, [content, componentName, enableLogging])
-
   // Log component error
   useEffect(() => {
     if (error && enableLogging && typeof window !== 'undefined') {
-      componentLogger.logComponentError(componentName, error as Error, {
+      componentLogger.error(componentName, error as Error, {
+        description: 'Error fetching home content',
         queryKey: 'home-content',
       })
     }

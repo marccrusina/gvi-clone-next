@@ -13,7 +13,7 @@ export class HomeContentStore {
   status: ApiStatus = 'idle'
   error: Error | null = null
   lastFetchTime: number | null = null
-  isLoading = false
+  isLoading = true
 
   constructor() {
     makeAutoObservable(this)
@@ -24,6 +24,7 @@ export class HomeContentStore {
     this.isLoading = true
     this.status = 'loading'
     this.error = null
+    this.data = null
   }
 
   setSuccess = (data: HomeContentData) => {
@@ -83,8 +84,23 @@ export class HomeContentStore {
   // Invalidate and refetch
   invalidateAndRefetch = async () => {
     const queryClient = getQueryClient()
-    await queryClient.invalidateQueries({ queryKey: homeContent.queryKey })
-    return await queryClient.fetchQuery(homeContent)
+
+    // Set loading state at the start (this will clear data)
+    this.setLoading()
+
+    try {
+      await queryClient.invalidateQueries({ queryKey: homeContent.queryKey })
+      const result = await queryClient.fetchQuery(homeContent)
+
+      // Sync with the updated query state after successful refetch
+      this.syncWithQuery()
+
+      return result
+    } catch (error) {
+      // Handle any errors during the refetch process
+      this.setError(error as Error)
+      throw error
+    }
   }
 
   // Computed values

@@ -1,21 +1,15 @@
-// Simple, universal logger that works in both browser and Node.js
 interface LogMeta {
   [key: string]: unknown
 }
 
-// Utility to check if we're in a browser environment
 const isBrowser =
   typeof window !== 'undefined' && typeof document !== 'undefined'
-
-// Removed unused LogEntry interface
-
 class SimpleLogger {
   private context: string
   private isBrowser: boolean
 
   constructor(context: string) {
     this.context = context
-    // Use the global isBrowser check
     this.isBrowser = isBrowser
   }
 
@@ -67,14 +61,8 @@ class SimpleLogger {
       case 'error':
         console.error(formattedMessage)
         break
-      case 'warn':
-        console.warn(formattedMessage)
-        break
       case 'info':
         console.info(formattedMessage)
-        break
-      case 'debug':
-        console.debug(formattedMessage)
         break
       default:
         console.log(formattedMessage)
@@ -109,16 +97,8 @@ class SimpleLogger {
     }
   }
 
-  debug(message: string, meta?: LogMeta) {
-    this.log('debug', message, meta)
-  }
-
   info(message: string, meta?: LogMeta) {
     this.log('info', message, meta)
-  }
-
-  warn(message: string, meta?: LogMeta) {
-    this.log('warn', message, meta)
   }
 
   error(message: string, error?: Error | unknown, meta?: LogMeta) {
@@ -151,7 +131,7 @@ class SimpleLogger {
     meta?: LogMeta
   ): Promise<T> {
     const start = performance.now()
-    this.debug(`Starting ${operation}`, meta)
+    this.info(`Starting ${operation}`, meta)
 
     try {
       const result = await fn()
@@ -194,14 +174,6 @@ class SimpleLogger {
     this.info(`Component info: ${componentName}`, { props })
   }
 
-  logComponentMount(componentName: string, props?: LogMeta) {
-    this.debug(`Component mounted: ${componentName}`, { props })
-  }
-
-  logComponentUnmount(componentName: string) {
-    this.debug(`Component unmounted: ${componentName}`)
-  }
-
   logComponentError(componentName: string, error: Error, errorInfo?: LogMeta) {
     this.error(`Component error in ${componentName}`, error, { errorInfo })
   }
@@ -229,14 +201,4 @@ export const logError = (
 export const logInfo = (message: string, meta?: LogMeta) => {
   const logger = new SimpleLogger('GLOBAL')
   logger.info(message, meta)
-}
-
-export const logWarning = (message: string, meta?: LogMeta) => {
-  const logger = new SimpleLogger('GLOBAL')
-  logger.warn(message, meta)
-}
-
-export const logDebug = (message: string, meta?: LogMeta) => {
-  const logger = new SimpleLogger('GLOBAL')
-  logger.debug(message, meta)
 }

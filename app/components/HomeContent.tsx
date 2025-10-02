@@ -3,40 +3,21 @@
 import { observer } from 'mobx-react-lite'
 import { useHomeContent } from './useHomeContent'
 import { homeContentStore } from '@/stores/home-content-store'
-import { componentLogger } from '@/libs/simple-logger'
+import {
+  handleInvalidateAndRefetch,
+  handleReset,
+  handleSyncWithQuery,
+} from './demo-events'
 
 const HomeContent = observer(() => {
+  const content = homeContentStore.data
+  const error = homeContentStore.error
+
+  // Trigger the fetching of the data from Tanstack Query using this custom hook
   useHomeContent({
     componentName: 'HomeContent',
     enableLogging: true,
   })
-
-  const content = homeContentStore.data
-  const error = homeContentStore.error
-
-  // Demo functions to showcase features
-  const handleInvalidateAndRefetch = async () => {
-    try {
-      componentLogger.info('Invalidate and refetch triggered', {
-        source: 'demo-button',
-      })
-      await homeContentStore.invalidateAndRefetch()
-    } catch (err) {
-      componentLogger.error('Invalidate and refetch failed', err as Error, {
-        source: 'demo-button',
-      })
-    }
-  }
-
-  const handleReset = () => {
-    componentLogger.info('Store reset triggered', { source: 'demo-button' })
-    homeContentStore.reset()
-  }
-
-  const handleSyncWithQuery = () => {
-    componentLogger.info('Sync with query triggered', { source: 'demo-button' })
-    homeContentStore.syncWithQuery()
-  }
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
@@ -161,48 +142,6 @@ const HomeContent = observer(() => {
         >
           {JSON.stringify(content, null, 2)}
         </pre>
-      </div>
-
-      {/* Feature Description */}
-      <div
-        style={{
-          marginTop: '20px',
-          padding: '15px',
-          backgroundColor: '#e9ecef',
-          borderRadius: '5px',
-        }}
-      >
-        <h3>useHomeContent Hook Features Demonstrated:</h3>
-        <ul>
-          <li>
-            <strong>TanStack Query Integration:</strong> Uses useSuspenseQuery
-            for automatic data fetching
-          </li>
-          <li>
-            <strong>MobX Store Sync:</strong> Automatically syncs query state
-            with homeContentStore
-          </li>
-          <li>
-            <strong>Comprehensive Logging:</strong> Logs component mount,
-            errors, and performance
-          </li>
-          <li>
-            <strong>Error Handling:</strong> Proper error state management and
-            display
-          </li>
-          <li>
-            <strong>Store Methods:</strong> Access to refetch, invalidate,
-            reset, and sync methods
-          </li>
-          <li>
-            <strong>Configurable Logging:</strong> Enable/disable logging with
-            enableLogging option
-          </li>
-          <li>
-            <strong>Component Name Tracking:</strong> Custom component names for
-            better debugging
-          </li>
-        </ul>
       </div>
     </div>
   )
