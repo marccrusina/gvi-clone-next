@@ -20,7 +20,10 @@
     ],
     "paths": {
       "@/components/*": ["./app/components/*"],
-      "@/lib/*": ["./app/lib/*"],
+      "@/libs/*": ["./app/libs/*"],
+      "@/stores/*": ["./app/stores/*"],
+      "@/tanstack-query/*": ["./app/tanstack-query/*"],
+
       "@/public/*": ["./public/*"]
     }
   },

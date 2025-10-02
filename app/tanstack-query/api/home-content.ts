@@ -1,5 +1,5 @@
 import { queryOptions } from '@tanstack/react-query'
-import { apiLogger } from '@/lib/simple-logger'
+import { apiLogger } from '@/libs/simple-logger'
 
 export const homeContent = queryOptions({
   queryKey: ['home-content'],

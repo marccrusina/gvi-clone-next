@@ -2,8 +2,8 @@
 
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
-import { homeContent } from '../tanstack-query/api/home-content'
-import { componentLogger } from '@/lib/simple-logger'
+import { homeContent } from '@/tanstack-query/api/home-content'
+import { componentLogger } from '@/libs/simple-logger'
 
 export default function HomeContent() {
   const { data: content, error } = useSuspenseQuery(homeContent)

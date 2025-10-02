@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import { serverLogger } from '@/lib/simple-logger'
+import { serverLogger } from '@/libs/simple-logger'
 
 export function middleware(request: NextRequest) {
   const start = Date.now()
