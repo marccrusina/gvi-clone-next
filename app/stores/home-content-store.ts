@@ -1,5 +1,6 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import { apiLogger } from '@/libs/simple-logger'
+import { getQueryClient } from '@/tanstack-query/get-query-client'
+import { homeContent } from '@/tanstack-query/api/home-content'
 
 export interface HomeContentData {
   [key: string]: unknown
@@ -18,7 +19,7 @@ export class HomeContentStore {
     makeAutoObservable(this)
   }
 
-  // Actions
+  // Actions to sync with TanStack Query state
   setLoading = () => {
     this.isLoading = true
     this.status = 'loading'
@@ -53,6 +54,39 @@ export class HomeContentStore {
     })
   }
 
+  // Sync with TanStack Query state
+  syncWithQuery = () => {
+    const queryClient = getQueryClient()
+    const queryState = queryClient.getQueryState(homeContent.queryKey)
+
+    if (queryState) {
+      runInAction(() => {
+        if (queryState.status === 'pending') {
+          this.setLoading()
+        } else if (queryState.status === 'success') {
+          this.setSuccess(queryState.data as HomeContentData)
+        } else if (queryState.status === 'error') {
+          this.setError(queryState.error as Error)
+        }
+      })
+    }
+  }
+
+  // Get current data from TanStack Query cache
+  getCurrentData = () => {
+    const queryClient = getQueryClient()
+    return queryClient.getQueryData(homeContent.queryKey) as
+      | HomeContentData
+      | undefined
+  }
+
+  // Invalidate and refetch
+  invalidateAndRefetch = async () => {
+    const queryClient = getQueryClient()
+    await queryClient.invalidateQueries({ queryKey: homeContent.queryKey })
+    return await queryClient.fetchQuery(homeContent)
+  }
+
   // Computed values
   get hasData() {
     return this.data !== null
@@ -72,51 +106,6 @@ export class HomeContentStore {
 
   get isPending() {
     return this.status === 'loading'
-  }
-
-  // Async action to fetch home content
-  fetchHomeContent = async () => {
-    const url =
-      'https://uat-api.grandvision.it/api/v1/cms/live/home/content/grand-vision/it/it?storeId=110201&langId=-4'
-
-    this.setLoading()
-    apiLogger.logApiCall(url, 'GET')
-
-    const startTime = performance.now()
-
-    try {
-      const response = await fetch(url)
-      const duration = Math.round(performance.now() - startTime)
-
-      if (!response.ok) {
-        const errorMessage = `HTTP ${response.status}: ${response.statusText}`
-        apiLogger.logApiResponse(url, response.status, duration, {
-          error: errorMessage,
-        })
-        throw new Error(errorMessage)
-      }
-
-      const data = await response.json()
-      apiLogger.logApiResponse(url, response.status, duration, {
-        dataSize: JSON.stringify(data).length,
-        data: JSON.stringify(data),
-      })
-
-      this.setSuccess(data)
-      return data
-    } catch (error) {
-      const duration = Math.round(performance.now() - startTime)
-      const errorObj = error instanceof Error ? error : new Error(String(error))
-
-      apiLogger.error('API call failed', errorObj, {
-        url,
-        duration,
-        endpoint: 'home-content',
-      })
-
-      this.setError(errorObj)
-      throw errorObj
-    }
   }
 }
 
