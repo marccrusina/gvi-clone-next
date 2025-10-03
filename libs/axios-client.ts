@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { apiLogger } from './simple-logger'
+import { apiLogger } from '@/libs/simple-logger'
 
 // Define metadata interface for axios config
 interface AxiosConfigWithMetadata {

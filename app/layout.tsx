@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import './globals.css'
-import QueryProvider from './components/QueryProvider'
+import '@/app/globals.css'
+import QueryProvider from '@/components/QueryProvider'
 
 export const metadata: Metadata = {
   title: 'GVI Clone - NextJS',

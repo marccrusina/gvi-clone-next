@@ -19,10 +19,12 @@
       }
     ],
     "paths": {
-      "@/components/*": ["./app/components/*"],
-      "@/libs/*": ["./app/libs/*"],
-      "@/stores/*": ["./app/stores/*"],
-      "@/tanstack-query/*": ["./app/tanstack-query/*"]
+      "@/app/*": ["./app/*"],
+      "@/components/*": ["./components/*"],
+      "@/libs/*": ["./libs/*"],
+      "@/stores/*": ["./stores/*"],
+      "@/tanstack-query/*": ["./tanstack-query/*"],
+      "@/*": ["./*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

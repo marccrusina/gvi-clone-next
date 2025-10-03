@@ -1,13 +1,13 @@
 'use client'
 
 import { observer } from 'mobx-react-lite'
-import { useHomeContent } from './useHomeContent'
+import { useHomeContent } from '@/components/useHomeContent'
 import { homeContentStore } from '@/stores/home-content-store'
 import {
   handleInvalidateAndRefetch,
   handleReset,
   handleSyncWithQuery,
-} from './demo-events'
+} from '@/components/demo-events'
 
 const HomeContent = observer(() => {
   // Trigger the fetching of the data from Tanstack Query using this custom hook
