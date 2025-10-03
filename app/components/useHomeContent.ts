@@ -20,7 +20,7 @@ export const useHomeContent = (options: UseHomeContentOptions = {}) => {
   // Sync store with TanStack Query data after successful fetch
   useEffect(() => {
     if (content) {
-      homeContentStore.setSuccess(content)
+      homeContentStore.setSuccess(content as Record<string, unknown>)
     }
   }, [content])
 
