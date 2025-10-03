@@ -10,14 +10,14 @@ import {
 } from './demo-events'
 
 const HomeContent = observer(() => {
-  const content = homeContentStore.data
-  const error = homeContentStore.error
-
   // Trigger the fetching of the data from Tanstack Query using this custom hook
   useHomeContent({
     componentName: 'HomeContent',
     enableLogging: true,
   })
+
+  const content = homeContentStore.data
+  const error = homeContentStore.error
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>

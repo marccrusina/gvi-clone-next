@@ -22,9 +22,7 @@
       "@/components/*": ["./app/components/*"],
       "@/libs/*": ["./app/libs/*"],
       "@/stores/*": ["./app/stores/*"],
-      "@/tanstack-query/*": ["./app/tanstack-query/*"],
-
-      "@/public/*": ["./public/*"]
+      "@/tanstack-query/*": ["./app/tanstack-query/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
