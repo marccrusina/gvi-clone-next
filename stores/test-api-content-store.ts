@@ -1,15 +1,15 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import { getQueryClient } from '@/tanstack-query/get-query-client'
-import { homeContent } from '@/tanstack-query/api/home-content'
+import { testApiContent } from '@/tanstack-query/api/test-api-content'
 
-interface HomeContentData {
+interface TestApiContentData {
   [key: string]: unknown
 }
 
 type ApiStatus = 'idle' | 'loading' | 'success' | 'error'
 
-export class HomeContentStore {
-  data: HomeContentData | null = null
+export class TestApiContentStore {
+  data: TestApiContentData | null = null
   status: ApiStatus = 'idle'
   error: Error | null = null
   lastFetchTime: number | null = null
@@ -27,7 +27,7 @@ export class HomeContentStore {
     this.data = null
   }
 
-  setSuccess = (data: HomeContentData) => {
+  setSuccess = (data: TestApiContentData) => {
     runInAction(() => {
       this.data = data
       this.status = 'success'
@@ -58,14 +58,14 @@ export class HomeContentStore {
   // Sync with TanStack Query state
   syncWithQuery = () => {
     const queryClient = getQueryClient()
-    const queryState = queryClient.getQueryState(homeContent.queryKey)
+    const queryState = queryClient.getQueryState(testApiContent.queryKey)
 
     if (queryState) {
       runInAction(() => {
         if (queryState.status === 'pending') {
           this.setLoading()
         } else if (queryState.status === 'success') {
-          this.setSuccess(queryState.data as HomeContentData)
+          this.setSuccess(queryState.data as TestApiContentData)
         } else if (queryState.status === 'error') {
           this.setError(queryState.error as Error)
         }
@@ -76,8 +76,8 @@ export class HomeContentStore {
   // Get current data from TanStack Query cache
   getCurrentData = () => {
     const queryClient = getQueryClient()
-    return queryClient.getQueryData(homeContent.queryKey) as
-      | HomeContentData
+    return queryClient.getQueryData(testApiContent.queryKey) as
+      | TestApiContentData
       | undefined
   }
 
@@ -88,8 +88,8 @@ export class HomeContentStore {
     this.setLoading()
 
     try {
-      await queryClient.invalidateQueries({ queryKey: homeContent.queryKey })
-      const result = await queryClient.fetchQuery(homeContent)
+      await queryClient.invalidateQueries({ queryKey: testApiContent.queryKey })
+      const result = await queryClient.fetchQuery(testApiContent)
 
       // Sync with the updated query state after successful refetch
       this.syncWithQuery()
@@ -125,4 +125,4 @@ export class HomeContentStore {
 }
 
 // Create and export a singleton instance
-export const homeContentStore = new HomeContentStore()
+export const testApiContentStore = new TestApiContentStore()

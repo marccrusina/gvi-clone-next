@@ -2,32 +2,32 @@
 
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
-import { homeContent } from '@/tanstack-query/api/home-content'
-import { homeContentStore } from '@/stores/home-content-store'
+import { testApiContent } from '@/tanstack-query/api/test-api-content'
+import { testApiContentStore } from '@/stores/test-api-content-store'
 import { componentLogger } from '@/libs/simple-logger'
 
-interface UseHomeContentOptions {
+interface UseTestApiContentOptions {
   componentName?: string
   enableLogging?: boolean
 }
 
-export const useHomeContent = (options: UseHomeContentOptions = {}) => {
-  const { componentName = 'HomeContent', enableLogging = true } = options
+export const useTestApiContent = (options: UseTestApiContentOptions = {}) => {
+  const { componentName = 'TestApiContent', enableLogging = true } = options
 
   // Use TanStack Query to trigger the fetch
-  const { data: content, error } = useSuspenseQuery(homeContent)
+  const { data: content, error } = useSuspenseQuery(testApiContent)
 
   // Sync store with TanStack Query data after successful fetch
   useEffect(() => {
     if (content) {
-      homeContentStore.setSuccess(content as Record<string, unknown>)
+      testApiContentStore.setSuccess(content as Record<string, unknown>)
     }
   }, [content])
 
   // Sync store with TanStack Query error after failed fetch
   useEffect(() => {
     if (error) {
-      homeContentStore.setError(error as Error)
+      testApiContentStore.setError(error as Error)
     }
   }, [error])
 
@@ -35,8 +35,8 @@ export const useHomeContent = (options: UseHomeContentOptions = {}) => {
   useEffect(() => {
     if (error && enableLogging && typeof window !== 'undefined') {
       componentLogger.error(componentName, error as Error, {
-        description: 'Error fetching home content',
-        queryKey: 'home-content',
+        description: 'Error fetching test API content',
+        queryKey: 'test-api-content',
       })
     }
   }, [error, componentName, enableLogging])

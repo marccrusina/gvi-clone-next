@@ -1,8 +1,8 @@
 import { queryOptions } from '@tanstack/react-query'
 import axiosClient from '@/libs/axios-client'
 
-export const homeContent = queryOptions({
-  queryKey: ['home-content'],
+export const testApiContent = queryOptions({
+  queryKey: ['test-api-content'],
   queryFn: async () => {
     const url =
       'https://uat-api.grandvision.it/api/v1/cms/live/home/content/grand-vision/it/it?storeId=110201&langId=-4'

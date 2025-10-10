@@ -1,27 +1,27 @@
 'use client'
 
 import { observer } from 'mobx-react-lite'
-import { useHomeContent } from '@/components/useHomeContent'
-import { homeContentStore } from '@/stores/home-content-store'
+import { useTestApiContent } from '@/components/useTestApiContent'
+import { testApiContentStore } from '@/stores/test-api-content-store'
 import {
   handleInvalidateAndRefetch,
   handleReset,
   handleSyncWithQuery,
 } from '@/components/demo-events'
 
-const HomeContent = observer(() => {
+const TestApiContent = observer(() => {
   // Trigger the fetching of the data from Tanstack Query using this custom hook
-  useHomeContent({
-    componentName: 'HomeContent',
+  useTestApiContent({
+    componentName: 'TestApiContent',
     enableLogging: true,
   })
 
-  const content = homeContentStore.data
-  const error = homeContentStore.error
+  const content = testApiContentStore.data
+  const error = testApiContentStore.error
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h2>Home Content Demo</h2>
+      <h2>Test API Content Demo</h2>
       <br />
 
       {/* Status Display */}
@@ -35,24 +35,24 @@ const HomeContent = observer(() => {
       >
         <h3>Current Status</h3>
         <p>
-          <strong>Store Status:</strong> {homeContentStore.status}
+          <strong>Store Status:</strong> {testApiContentStore.status}
         </p>
         <p>
           <strong>Store Has Data:</strong>{' '}
-          {homeContentStore.hasData ? 'Yes' : 'No'}
+          {testApiContentStore.hasData ? 'Yes' : 'No'}
         </p>
         <p>
           <strong>Store Is Loading:</strong>{' '}
-          {homeContentStore.isLoading ? 'Yes' : 'No'}
+          {testApiContentStore.isLoading ? 'Yes' : 'No'}
         </p>
         <p>
           <strong>Store Error:</strong>{' '}
-          {homeContentStore.error?.message || 'None'}
+          {testApiContentStore.error?.message || 'None'}
         </p>
         <p>
           <strong>Last Fetch Time:</strong>{' '}
-          {homeContentStore.lastFetchTime
-            ? new Date(homeContentStore.lastFetchTime).toLocaleString()
+          {testApiContentStore.lastFetchTime
+            ? new Date(testApiContentStore.lastFetchTime).toLocaleString()
             : 'Never'}
         </p>
       </div>
@@ -147,4 +147,4 @@ const HomeContent = observer(() => {
   )
 })
 
-export default HomeContent
+export default TestApiContent
