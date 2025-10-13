@@ -2,9 +2,9 @@
 
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
-import { testApiContent } from '@/tanstack-query/api/test-api-content'
-import { testApiContentStore } from '@/stores/test-api-content-store'
 import { componentLogger } from '@/libs/simple-logger'
+import { testApiContentStore } from '@/stores/test-api-content-store'
+import { testApiContent } from '@/tanstack-query/api/test-api-content'
 
 interface UseTestApiContentOptions {
   componentName?: string

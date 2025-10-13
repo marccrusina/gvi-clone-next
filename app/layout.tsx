@@ -1,9 +1,9 @@
 import '@/app/globals.css'
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import type { Metadata } from 'next'
 import QueryProvider from '@/components/QueryProvider'
 import { testApiContent } from '@/tanstack-query/api/test-api-content'
 import { getQueryClient } from '@/tanstack-query/get-query-client'
-import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 
 export const metadata: Metadata = {
   title: 'GVI Clone - NextJS',

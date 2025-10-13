@@ -1,13 +1,13 @@
 'use client'
 
 import { observer } from 'mobx-react-lite'
-import { useTestApiContent } from '@/components/useTestApiContent'
-import { testApiContentStore } from '@/stores/test-api-content-store'
 import {
   handleInvalidateAndRefetch,
   handleReset,
   handleSyncWithQuery,
 } from '@/components/demo-events'
+import { useTestApiContent } from '@/components/useTestApiContent'
+import { testApiContentStore } from '@/stores/test-api-content-store'
 
 const TestApiContent = observer(() => {
   // Trigger the fetching of the data from Tanstack Query using this custom hook
@@ -69,6 +69,7 @@ const TestApiContent = observer(() => {
           }}
         >
           <button
+            type="button"
             onClick={handleInvalidateAndRefetch}
             style={{
               padding: '8px 16px',
@@ -83,6 +84,7 @@ const TestApiContent = observer(() => {
           </button>
 
           <button
+            type="button"
             onClick={handleReset}
             style={{
               padding: '8px 16px',
@@ -97,6 +99,7 @@ const TestApiContent = observer(() => {
           </button>
 
           <button
+            type="button"
             onClick={handleSyncWithQuery}
             style={{
               padding: '8px 16px',

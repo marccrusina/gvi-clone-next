@@ -27,7 +27,7 @@ axiosClient.interceptors.request.use(
   (error) => {
     apiLogger.error('Request interceptor error', error)
     return Promise.reject(error)
-  }
+  },
 )
 
 // Response interceptor for logging responses and errors
@@ -62,7 +62,7 @@ axiosClient.interceptors.response.use(
     })
 
     return Promise.reject(error)
-  }
+  },
 )
 
 // Add performance timing to requests
@@ -78,8 +78,10 @@ axiosClient.interceptors.response.use(
     const startTime = (response.config as AxiosConfigWithMetadata).metadata
       ?.startTime
     if (startTime) {
-      ;(response.config as AxiosConfigWithMetadata).metadata!.duration =
-        Math.round(performance.now() - startTime)
+      const config = response.config as AxiosConfigWithMetadata
+      if (config.metadata) {
+        config.metadata.duration = Math.round(performance.now() - startTime)
+      }
     }
     return response
   },
@@ -87,11 +89,13 @@ axiosClient.interceptors.response.use(
     const startTime = (error.config as AxiosConfigWithMetadata)?.metadata
       ?.startTime
     if (startTime) {
-      ;(error.config as AxiosConfigWithMetadata).metadata!.duration =
-        Math.round(performance.now() - startTime)
+      const config = error.config as AxiosConfigWithMetadata
+      if (config.metadata) {
+        config.metadata.duration = Math.round(performance.now() - startTime)
+      }
     }
     return Promise.reject(error)
-  }
+  },
 )
 
 export default axiosClient

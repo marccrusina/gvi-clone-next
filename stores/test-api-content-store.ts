@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import { getQueryClient } from '@/tanstack-query/get-query-client'
 import { testApiContent } from '@/tanstack-query/api/test-api-content'
+import { getQueryClient } from '@/tanstack-query/get-query-client'
 
 interface TestApiContentData {
   [key: string]: unknown

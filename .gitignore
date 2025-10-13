@@ -38,3 +38,39 @@ next-env.d.ts
 # Logs
 logs/
 *.log
+
+# IDE and editor files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Biome ignore file (since we're using VCS integration)
+.biomeignore
+
+# Husky files (should be tracked for team consistency)
+# .husky/ - REMOVED: Husky hooks should be shared with the team
+
+# Lint staged config (should be tracked for team consistency)
+# .lintstagedrc.json - REMOVED: Lint-staged config should be shared with the team
+
+# Favicon and other assets that don't need linting
+*.ico
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.webp

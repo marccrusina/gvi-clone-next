@@ -16,7 +16,7 @@ class SimpleLogger {
   private formatMessage(
     level: string,
     message: string,
-    meta?: LogMeta
+    meta?: LogMeta,
   ): string {
     // Use a consistent timestamp format that won't cause hydration mismatches
     const timestamp = this.isBrowser
@@ -114,7 +114,7 @@ class SimpleLogger {
     url: string,
     statusCode?: number,
     duration?: number,
-    meta?: LogMeta
+    meta?: LogMeta,
   ) {
     this.log('http', `${method} ${url}`, {
       method,
@@ -128,7 +128,7 @@ class SimpleLogger {
   async trackPerformance<T>(
     operation: string,
     fn: () => Promise<T>,
-    meta?: LogMeta
+    meta?: LogMeta,
   ): Promise<T> {
     const start = performance.now()
     this.info(`Starting ${operation}`, meta)
@@ -159,7 +159,7 @@ class SimpleLogger {
     url: string,
     statusCode: number,
     duration: number,
-    meta?: LogMeta
+    meta?: LogMeta,
   ) {
     const level = statusCode >= 400 ? 'error' : 'info'
     this.log(level, `API Response: ${url}`, {
@@ -192,7 +192,7 @@ export const clientLogger = createLogger('CLIENT')
 export const logError = (
   message: string,
   error?: Error | unknown,
-  meta?: LogMeta
+  meta?: LogMeta,
 ) => {
   const logger = new SimpleLogger('GLOBAL')
   logger.error(message, error, meta)

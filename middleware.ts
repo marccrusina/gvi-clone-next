@@ -1,5 +1,5 @@
-import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server'
 import { serverLogger } from '@/libs/simple-logger'
 
 export function middleware(request: NextRequest) {
