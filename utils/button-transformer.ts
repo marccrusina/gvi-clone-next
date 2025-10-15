@@ -1,17 +1,20 @@
-import {
+import type {
   ApiButtonData,
-  ButtonProps,
-  ButtonVariant,
   ButtonFillType,
+  ButtonProps,
   ButtonSize,
-  LinkProps
+  ButtonVariant,
+  LinkProps,
 } from '@/types/button'
 
 /**
  * Transform variant from various API naming conventions
  */
-const transformVariant = (apiData: ApiButtonData): ButtonVariant | undefined => {
-  const variantValue = apiData.variant ||
+const transformVariant = (
+  apiData: ApiButtonData,
+): ButtonVariant | undefined => {
+  const variantValue =
+    apiData.variant ||
     apiData.type ||
     apiData.style ||
     apiData.appearance ||
@@ -31,26 +34,26 @@ const transformVariant = (apiData: ApiButtonData): ButtonVariant | undefined => 
 
   // Map common API values to component variants
   const variantMap: Record<string, ButtonVariant> = {
-    'primary': 'primary',
-    'main': 'primary',
-    'default': 'primary',
-    'cta': 'primary',
+    primary: 'primary',
+    main: 'primary',
+    default: 'primary',
+    cta: 'primary',
     'call-to-action': 'primary',
-    'action': 'primary',
+    action: 'primary',
 
-    'secondary': 'secondary',
-    'outline': 'secondary',
-    'ghost': 'secondary',
-    'subtle': 'secondary',
+    secondary: 'secondary',
+    outline: 'secondary',
+    ghost: 'secondary',
+    subtle: 'secondary',
 
-    'tertiary': 'tertiary',
-    'text': 'tertiary',
-    'link': 'tertiary',
-    'minimal': 'tertiary',
+    tertiary: 'tertiary',
+    text: 'tertiary',
+    link: 'tertiary',
+    minimal: 'tertiary',
 
-    'quaternary': 'quaternary',
-    'alternative': 'quaternary',
-    'alt': 'quaternary'
+    quaternary: 'quaternary',
+    alternative: 'quaternary',
+    alt: 'quaternary',
   }
 
   return variantMap[normalizedVariant]
@@ -59,10 +62,10 @@ const transformVariant = (apiData: ApiButtonData): ButtonVariant | undefined => 
 /**
  * Transform fill type from API data
  */
-const transformFillType = (apiData: ApiButtonData): ButtonFillType | undefined => {
-  const fillValue = apiData.style ||
-    apiData.variant ||
-    apiData.appearance
+const transformFillType = (
+  apiData: ApiButtonData,
+): ButtonFillType | undefined => {
+  const fillValue = apiData.style || apiData.variant || apiData.appearance
 
   if (!fillValue) return undefined
 
@@ -75,15 +78,19 @@ const transformFillType = (apiData: ApiButtonData): ButtonFillType | undefined =
   }
 
   // Map common API values to fill types
-  if (normalizedFill.includes('outline') ||
+  if (
+    normalizedFill.includes('outline') ||
     normalizedFill.includes('border') ||
-    normalizedFill.includes('ghost')) {
+    normalizedFill.includes('ghost')
+  ) {
     return 'outline'
   }
 
-  if (normalizedFill.includes('fill') ||
+  if (
+    normalizedFill.includes('fill') ||
     normalizedFill.includes('solid') ||
-    normalizedFill.includes('primary')) {
+    normalizedFill.includes('primary')
+  ) {
     return 'fill'
   }
 
@@ -102,21 +109,21 @@ const transformSize = (apiData: ApiButtonData): ButtonSize | undefined => {
 
   // Map common API values to component sizes
   const sizeMap: Record<string, ButtonSize> = {
-    'small': 'small',
-    'sm': 'small',
-    'xs': 'small',
-    'mini': 'small',
+    small: 'small',
+    sm: 'small',
+    xs: 'small',
+    mini: 'small',
 
-    'medium': 'medium',
-    'md': 'medium',
-    'normal': 'medium',
-    'default': 'medium',
+    medium: 'medium',
+    md: 'medium',
+    normal: 'medium',
+    default: 'medium',
 
-    'large': 'big',
-    'big': 'big',
-    'lg': 'big',
-    'xl': 'big',
-    'huge': 'big'
+    large: 'big',
+    big: 'big',
+    lg: 'big',
+    xl: 'big',
+    huge: 'big',
   }
 
   return sizeMap[normalizedSize]
@@ -128,10 +135,10 @@ const transformSize = (apiData: ApiButtonData): ButtonSize | undefined => {
 const transformFullwidth = (apiData: ApiButtonData): boolean => {
   return Boolean(
     apiData.fullWidth ||
-    apiData.full_width ||
-    apiData.isFullWidth ||
-    (typeof apiData.width === 'string' && apiData.width === 'full') ||
-    (typeof apiData.width === 'boolean' && apiData.width)
+      apiData.full_width ||
+      apiData.isFullWidth ||
+      (typeof apiData.width === 'string' && apiData.width === 'full') ||
+      (typeof apiData.width === 'boolean' && apiData.width),
   )
 }
 
@@ -139,19 +146,19 @@ const transformFullwidth = (apiData: ApiButtonData): boolean => {
  * Transform external link flag
  */
 const transformExternal = (apiData: ApiButtonData): boolean => {
-  // Handle GrandVision target object structure
+  // Handle target object structure
   if (typeof apiData.target === 'object' && apiData.target) {
     return Boolean(
       apiData.target.openInNewWindow ||
-      apiData.target.type === 'CMExternalPage'
+        apiData.target.type === 'CMExternalPage',
     )
   }
 
   return Boolean(
     apiData.external ||
-    apiData.isExternal ||
-    apiData.is_external ||
-    apiData.target === '_blank'
+      apiData.isExternal ||
+      apiData.is_external ||
+      apiData.target === '_blank',
   )
 }
 
@@ -174,7 +181,7 @@ const isExternalUrl = (url: string): boolean => {
 const transformTo = (apiData: ApiButtonData): LinkProps | string => {
   let url = apiData.href || apiData.url || apiData.link || apiData.formattedUrl
 
-  // Handle complex target object (e.g., GrandVision API)
+  // Handle complex target object from CMS API
   if (typeof apiData.target === 'object' && apiData.target) {
     url = url || apiData.target.formattedUrl || apiData.target.href
   }
@@ -183,14 +190,18 @@ const transformTo = (apiData: ApiButtonData): LinkProps | string => {
   url = url || '#'
 
   // Determine if external link
-  const isExternal = isExternalUrl(url) || apiData.external || apiData.isExternal ||
+  const isExternal =
+    isExternalUrl(url) ||
+    apiData.external ||
+    apiData.isExternal ||
     (typeof apiData.target === 'string' && apiData.target === '_blank') ||
-    (typeof apiData.target === 'object' && apiData.target?.type === 'CMExternalPage')
+    (typeof apiData.target === 'object' &&
+      apiData.target?.type === 'CMExternalPage')
 
   // If we need LinkProps object (external or has target info)
   if (isExternal || apiData.target || apiData.external || apiData.isExternal) {
     const linkProps: LinkProps = {
-      href: url
+      href: url,
     }
 
     // Handle string target
@@ -218,7 +229,7 @@ const transformTo = (apiData: ApiButtonData): LinkProps | string => {
  * Map icon string to React component (placeholder)
  * This should be expanded based on your icon system (e.g., Lucide, Heroicons, etc.)
  */
-const mapIconString = (iconString: string): React.ReactNode | undefined => {
+const mapIconString = (_iconString: string): React.ReactNode | undefined => {
   // TODO: Implement actual icon mapping based on your icon system
   // For now, return undefined - this will be expanded when you implement icons
 
@@ -236,11 +247,13 @@ const mapIconString = (iconString: string): React.ReactNode | undefined => {
 /**
  * Transform icon data (placeholder - needs actual icon mapping logic)
  */
-const transformIcons = (apiData: ApiButtonData): {
-  startIcon?: React.ReactNode,
+const transformIcons = (
+  apiData: ApiButtonData,
+): {
+  startIcon?: React.ReactNode
   endIcon?: React.ReactNode
 } => {
-  const icons: { startIcon?: React.ReactNode, endIcon?: React.ReactNode } = {}
+  const icons: { startIcon?: React.ReactNode; endIcon?: React.ReactNode } = {}
 
   // Handle explicit start/end icons
   if (apiData.startIcon) {
@@ -270,31 +283,31 @@ const transformIcons = (apiData: ApiButtonData): {
  * Transform loading state
  */
 const transformLoading = (apiData: ApiButtonData): boolean => {
-  return Boolean(
-    apiData.loading ||
-    apiData.isLoading ||
-    apiData.is_loading
-  )
+  return Boolean(apiData.loading || apiData.isLoading || apiData.is_loading)
 }
 
 /**
  * Transform data element ID for tracking
  */
 const transformDataElementId = (apiData: ApiButtonData): string | undefined => {
-  return apiData.dataId ||
+  return (
+    apiData.dataId ||
     apiData.data_id ||
     apiData.trackingId ||
     apiData.tracking_id ||
     apiData.elementId ||
     apiData.element_id ||
     apiData.id
+  )
 }
 
 /**
  * Main transformation function - transforms API button data into Button component props
  * Handles various naming conventions and data structures from different APIs
  */
-export const transformButtonProps = (apiData: ApiButtonData): Partial<ButtonProps> => {
+export const transformButtonProps = (
+  apiData: ApiButtonData,
+): Partial<ButtonProps> => {
   const props: Partial<ButtonProps> = {}
 
   // Transform all properties
@@ -318,8 +331,10 @@ export const transformButtonProps = (apiData: ApiButtonData): Partial<ButtonProp
 /**
  * Utility function to transform multiple buttons at once
  */
-export const transformMultipleButtonProps = (apiButtons: ApiButtonData[]): Partial<ButtonProps>[] => {
-  return apiButtons.map(button => transformButtonProps(button))
+export const transformMultipleButtonProps = (
+  apiButtons: ApiButtonData[],
+): Partial<ButtonProps>[] => {
+  return apiButtons.map((button) => transformButtonProps(button))
 }
 
 /**
@@ -327,7 +342,7 @@ export const transformMultipleButtonProps = (apiButtons: ApiButtonData[]): Parti
  */
 export const transformButtonPropsWithDefaults = (
   apiData: ApiButtonData,
-  defaults: Partial<ButtonProps> = {}
+  defaults: Partial<ButtonProps> = {},
 ): Partial<ButtonProps> => {
   const transformed = transformButtonProps(apiData)
   return { ...defaults, ...transformed }

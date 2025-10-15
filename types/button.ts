@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react'
+import type { MouseEventHandler } from 'react'
 
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'quaternary'
 export type ButtonFillType = 'fill' | 'outline'
@@ -19,7 +19,7 @@ export interface ButtonProps {
   to?: LinkProps | string
   startIcon?: React.ReactNode
   endIcon?: React.ReactNode
-  onClick?: MouseEventHandler<any>
+  onClick?: MouseEventHandler<HTMLButtonElement>
   dataElementId?: string
   loading?: boolean
 }
@@ -42,14 +42,16 @@ export interface ApiButtonData {
   href?: string
   url?: string
   link?: string
-  target?: string | {
-    type?: string
-    title?: string
-    formattedUrl?: string
-    href?: string
-    openInNewWindow?: boolean
-    [key: string]: any
-  }
+  target?:
+    | string
+    | {
+        type?: string
+        title?: string
+        formattedUrl?: string
+        href?: string
+        openInNewWindow?: boolean
+        [key: string]: unknown
+      }
   external?: boolean
   isExternal?: boolean
   is_external?: boolean

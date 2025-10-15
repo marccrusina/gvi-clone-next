@@ -9,18 +9,21 @@ export default function DemoNavigation() {
         backgroundColor: '#ffffff',
         borderRadius: '12px',
         border: '1px solid #e5e7eb',
-        boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+        boxShadow:
+          '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
       }}
     >
-      <h3 style={{ 
-        fontSize: '18px',
-        fontWeight: '600',
-        color: '#111827',
-        margin: '0 0 16px 0',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px'
-      }}>
+      <h3
+        style={{
+          fontSize: '18px',
+          fontWeight: '600',
+          color: '#111827',
+          margin: '0 0 16px 0',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+        }}
+      >
         🧪 Component System Demos
       </h3>
       <div
@@ -36,16 +39,25 @@ export default function DemoNavigation() {
           icon="🔄"
           title="Button Transformer Demo"
         />
+        <DemoLink
+          href="/carousel-transformer"
+          icon="🎠"
+          title="Carousel Transformer Demo"
+        />
+        <DemoLink href="/carousel-demo" icon="🎪" title="Carousel Demo" />
         {/* Future component demos can be easily added here */}
       </div>
 
-      <p style={{ 
-        fontSize: '14px', 
-        color: '#6b7280', 
-        margin: '0',
-        lineHeight: '1.5'
-      }}>
-        Test universal component transformers with GrandVision-realistic API examples
+      <p
+        style={{
+          fontSize: '14px',
+          color: '#6b7280',
+          margin: '0',
+          lineHeight: '1.5',
+        }}
+      >
+        Test universal component transformers and design system foundations with
+        SCSS theme (pure SCSS, no MUI dependencies)
       </p>
     </div>
   )
