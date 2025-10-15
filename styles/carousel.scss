@@ -1,0 +1,246 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Main Carousel Wrapper
+.carousel-wrapper {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+// Optional Title (if provided)
+.carousel-title {
+  font-family: $font-family-primary;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-2xl;
+  text-transform: uppercase;
+  color: $color-text-dark;
+  text-align: center;
+  margin-bottom: $spacing-4;
+  line-height: $line-height-snug;
+
+  @include tablet-landscape-up {
+    font-size: $font-size-xl;
+  }
+}
+
+// Slider Container - holds navigation and carousel
+.carousel-slider-container {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: $spacing-4;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+// Main Glide Carousel
+.carousel-glide {
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+
+  .glide__track {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .glide__slides {
+    min-width: 100%;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .glide__slide {
+    width: 90%;
+    max-width: 380px;
+    max-height: 700px;
+    display: flex;
+    height: auto;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    
+    @include tablet-portrait-up {
+      width: 100%;
+      max-width: none;
+    }
+  }
+
+  .glide__slide img {
+    object-fit: contain;
+    height: 100%;
+    background-color: $color-white-main;
+  }
+}
+
+// Navigation Buttons Container
+.carousel-slider-navigation-container {
+  @include flex-center;
+  flex-direction: column;
+  z-index: $z-index-lv2;
+  min-height: 40px;
+  padding: calc($spacing-base * 2.5) $spacing-5;
+  width: 80px;
+  border-top: 2px solid $color-text-dark;
+  margin-bottom: calc($spacing-base * 14);
+
+  @include mobile-only {
+    display: none;
+  }
+
+  @include tablet-portrait-only {
+    display: none;
+  }
+
+  @include tablet-landscape-up {
+    display: flex;
+  }
+}
+
+// Navigation Buttons
+.carousel-slider-navigation-button {
+  @include button-reset;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: $font-weight-semibold;
+  line-height: 1.33;
+  color: $color-text-dark;
+  cursor: pointer;
+  transition: opacity $transition-duration-base $transition-timing-ease;
+
+  &:after {
+    display: none;
+  }
+
+  &:hover:not(:disabled) {
+    opacity: 0.7;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// Scrollbar Styling
+.glide__scrollbar.glide__scrollbar--horizontal {
+  position: relative;
+  order: 1;
+  border-radius: 2px;
+  height: 2px;
+  width: 200px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: $color-grey-light;
+  margin-top: $spacing-2;
+
+  @include tablet-portrait-up {
+    display: none;
+  }
+
+  .glide__scrollbar-thumb {
+    height: 2px;
+    background: $color-primary-main;
+  }
+}
+
+// Carousel content wrapper
+.carousel-slide-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: $spacing-4 0;
+  gap: $spacing-2;
+  color: $color-text-dark;
+  word-break: break-word;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+  @include tablet-portrait-up {
+    margin: $spacing-4 0;
+  }
+}
+
+// Brand carousel variant
+.carousel-basic {
+  padding: 0;
+
+  .carousel-slide-content {
+    margin: 0;
+    gap: 0;
+    display: block;
+  }
+
+  .glide__slide {
+    width: auto;
+  }
+}
+
+// Product Tile Gallery
+.carousel-product-tile-glide {
+  width: 100%;
+  flex: 1;
+  padding-bottom: $spacing-4;
+
+  &--hidden {
+    width: 0;
+    flex: 0;
+  }
+
+  .glide__slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+}
+
+// Responsive Behavior
+.carousel-responsive {
+  @include mobile-only {
+    .glide__slide {
+      width: 90%;
+    }
+  }
+
+  @include breakpoint-between($breakpoint-sm, $breakpoint-md) {
+    .glide__slide {
+      width: 45%;
+    }
+  }
+
+  @include tablet-landscape-up {
+    .glide__slide {
+      width: calc(100% / 3);
+    }
+
+    .carousel-slider-navigation-container {
+      display: flex;
+    }
+  }
+
+  @include desktop-up {
+    .glide__slide {
+      width: calc(100% / 4);
+    }
+  }
+}
