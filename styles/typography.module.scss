@@ -1,0 +1,298 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.typography {
+  margin: 0;
+  font-family: $font-family-primary;
+  line-height: 1.5;
+  color: var(--text-color);
+  
+  &.gutterBottom {
+    margin-bottom: $spacing-4;
+  }
+  
+  &.noWrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+// Heading Variants
+.h1 {
+  font-size: $font-size-h1;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $color-text-dark;
+  margin-bottom: $spacing-lg;
+  
+  @include mobile-only {
+    font-size: $font-size-h2;
+    line-height: $line-height-normal;
+  }
+}
+
+.h2 {
+  font-size: $font-size-h2;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $color-text-dark;
+  margin-bottom: $spacing-4;
+  
+  @include mobile-only {
+    font-size: $font-size-h3;
+  }
+}
+
+.h3 {
+  font-size: $font-size-h3;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+  color: $color-text-dark;
+  margin-bottom: $spacing-4;
+  
+  @include mobile-only {
+    font-size: $font-size-h4;
+  }
+}
+
+.h4 {
+  font-size: $font-size-h4;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-normal;
+  color: $color-text-dark;
+  margin-bottom: $spacing-sm;
+}
+
+.h5 {
+  font-size: $font-size-h5;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+  color: $color-text-dark;
+  margin-bottom: $spacing-sm;
+}
+
+.h6 {
+  font-size: $font-size-h6;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+  color: $color-text-dark;
+  margin-bottom: $spacing-xs;
+}
+
+// Body Text Variants
+.body1 {
+  font-size: $font-size-body;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-relaxed;
+  color: $color-text-dark;
+}
+
+.body2 {
+  font-size: $font-size-small;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+  color: $color-text-dark;
+}
+
+.caption {
+  font-size: $font-size-caption;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+  color: $color-text-secondary;
+  letter-spacing: 0.03em;
+}
+
+.overline {
+  font-size: $font-size-caption;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+  color: $color-text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+// Color Variants
+.color-primary {
+  color: $color-primary-main !important;
+}
+
+.color-secondary {
+  color: $color-secondary-main !important;
+}
+
+.color-textPrimary {
+  color: $color-text-dark !important;
+}
+
+.color-textSecondary {
+  color: $color-text-secondary !important;
+}
+
+.color-error {
+  color: $color-error !important;
+}
+
+.color-inherit {
+  color: inherit !important;
+}
+
+// Text Alignment
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-justify {
+  text-align: justify;
+}
+
+// Font Weights
+.weight-light {
+  font-weight: $font-weight-light !important;
+}
+
+.weight-regular {
+  font-weight: $font-weight-regular !important;
+}
+
+.weight-medium {
+  font-weight: $font-weight-medium !important;
+}
+
+.weight-semibold {
+  font-weight: $font-weight-semibold !important;
+}
+
+.weight-bold {
+  font-weight: $font-weight-bold !important;
+}
+
+// Utility Classes for Direct Use
+:global(.text-h1) {
+  @extend .typography;
+  @extend .h1;
+}
+
+:global(.text-h2) {
+  @extend .typography;
+  @extend .h2;
+}
+
+:global(.text-h3) {
+  @extend .typography;
+  @extend .h3;
+}
+
+:global(.text-h4) {
+  @extend .typography;
+  @extend .h4;
+}
+
+:global(.text-h5) {
+  @extend .typography;
+  @extend .h5;
+}
+
+:global(.text-h6) {
+  @extend .typography;
+  @extend .h6;
+}
+
+:global(.text-body1) {
+  @extend .typography;
+  @extend .body1;
+}
+
+:global(.text-body2) {
+  @extend .typography;
+  @extend .body2;
+}
+
+:global(.text-caption) {
+  @extend .typography;
+  @extend .caption;
+}
+
+:global(.text-overline) {
+  @extend .typography;
+  @extend .overline;
+}
+
+// Text Utility Classes
+:global(.text-center) {
+  text-align: center;
+}
+
+:global(.text-left) {
+  text-align: left;
+}
+
+:global(.text-right) {
+  text-align: right;
+}
+
+:global(.text-justify) {
+  text-align: justify;
+}
+
+:global(.text-primary) {
+  color: $color-primary-main;
+}
+
+:global(.text-secondary) {
+  color: $color-secondary-main;
+}
+
+:global(.text-muted) {
+  color: $color-text-secondary;
+}
+
+:global(.font-light) {
+  font-weight: $font-weight-light;
+}
+
+:global(.font-regular) {
+  font-weight: $font-weight-regular;
+}
+
+:global(.font-medium) {
+  font-weight: $font-weight-medium;
+}
+
+:global(.font-semibold) {
+  font-weight: $font-weight-semibold;
+}
+
+:global(.font-bold) {
+  font-weight: $font-weight-bold;
+}
+
+:global(.text-uppercase) {
+  text-transform: uppercase;
+}
+
+:global(.text-lowercase) {
+  text-transform: lowercase;
+}
+
+:global(.text-capitalize) {
+  text-transform: capitalize;
+}
+
+:global(.text-nowrap) {
+  white-space: nowrap;
+}
+
+:global(.text-truncate) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
