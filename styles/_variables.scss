@@ -1,0 +1,183 @@
+// =============================================================================
+// GLOBAL THEME VARIABLES
+// Design system SCSS implementation
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// COLOR PALETTE (Brand Colors)
+// -----------------------------------------------------------------------------
+
+// Primary Colors (Design system exact values)
+$color-primary-main: #005abb;
+$color-primary-dark: #013365;    // Design system primary dark
+$color-primary-light: #c8e1f6;   // Design system primary light
+
+// Secondary Colors (Design system exact values)
+$color-secondary-main: #ff9c65;
+$color-secondary-dark: #ff6d29;  // Design system secondary dark
+$color-secondary-light: #f6ddd0; // Design system secondary light
+
+// Grey Scale (Design system exact values)
+$color-grey-lightest: #f7f6f4;  // Design system grey lightest
+$color-grey-lighter: #f3f4f6;
+$color-grey-light: #d8d8d8;     // Design system grey light
+$color-grey-main: #b0b0b0;      // Design system grey main
+$color-grey-dark: #767676;      // Design system grey dark
+$color-grey-darker: #4b5563;
+
+// Base Colors
+$color-white-main: #ffffff;
+$color-black-main: #000000;
+$color-black-secondary: #2B2E31;  // Design system black secondary
+
+// Text Colors (Design system exact values)
+$color-text-dark: #2b2e31;      // Design system text dark (not pure black)
+$color-text-light: #ffffff;
+$color-text-muted: #6b7280;
+$color-text-secondary: #6b7280;  // Alias for muted text
+
+// Status Colors (Design system exact values)
+$color-success: #247534;        // Design system success green
+$color-success-light: #d6f3e9;  // Design system success light
+$color-success-dark: #035630;   // Design system success dark
+
+$color-warning: #dc9f03;        // Design system warning yellow
+$color-warning-light: #fcf9db;  // Design system warning light
+$color-warning-dark: #b68405;   // Design system warning dark
+
+$color-error: #d32113;          // Design system error red
+$color-error-light: #fde1e1;    // Design system error light
+$color-error-dark: #7b0000;     // Design system error dark
+
+$color-info: #1465b4;           // Design system info blue
+$color-info-light: #dcedfc;     // Design system info light
+$color-info-dark: #083867;      // Design system info dark
+
+// -----------------------------------------------------------------------------
+// BREAKPOINTS (Custom Breakpoints)
+// -----------------------------------------------------------------------------
+$breakpoint-xs: 375px;   // Mobile
+$breakpoint-sm: 600px;   // Tablet Portrait
+$breakpoint-md: 1024px;  // Tablet Landscape
+$breakpoint-lg: 1280px;  // Desktop
+$breakpoint-xl: 1440px;  // Large Desktop
+
+// -----------------------------------------------------------------------------
+// SPACING SYSTEM (Based on 4px grid)
+// -----------------------------------------------------------------------------
+$spacing-base: 4px;
+
+$spacing-0: 0;
+$spacing-1: #{$spacing-base * 1};    // 4px
+$spacing-2: #{$spacing-base * 2};    // 8px  
+$spacing-3: #{$spacing-base * 3};    // 12px
+$spacing-4: #{$spacing-base * 4};    // 16px
+$spacing-5: #{$spacing-base * 5};    // 20px
+$spacing-6: #{$spacing-base * 6};    // 24px
+$spacing-7: #{$spacing-base * 7};    // 28px
+$spacing-8: #{$spacing-base * 8};    // 32px
+$spacing-10: #{$spacing-base * 10};  // 40px
+$spacing-12: #{$spacing-base * 12};  // 48px
+$spacing-16: #{$spacing-base * 16};  // 64px
+$spacing-20: #{$spacing-base * 20};  // 80px
+$spacing-24: #{$spacing-base * 24};  // 96px
+$spacing-32: #{$spacing-base * 32};  // 128px
+
+// Convenience aliases for common spacing
+$spacing-xs: $spacing-2;   // 8px
+$spacing-sm: $spacing-3;   // 12px
+$spacing-md: $spacing-4;   // 16px
+$spacing-lg: $spacing-6;   // 24px
+$spacing-xl: $spacing-8;   // 32px
+
+// -----------------------------------------------------------------------------
+// TYPOGRAPHY (Poppins Font System)
+// -----------------------------------------------------------------------------
+$font-family-primary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+// Font Weights
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Font Sizes (Responsive)
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-base: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-2xl: 24px;
+$font-size-3xl: 30px;
+$font-size-4xl: 36px;
+$font-size-5xl: 48px;
+
+// Typography Component Font Sizes
+$font-size-h1: $font-size-5xl;    // 48px
+$font-size-h2: $font-size-4xl;    // 36px
+$font-size-h3: $font-size-3xl;    // 30px
+$font-size-h4: $font-size-2xl;    // 24px
+$font-size-h5: $font-size-xl;     // 20px
+$font-size-h6: $font-size-lg;     // 18px
+$font-size-body: $font-size-base; // 16px
+$font-size-small: $font-size-sm;  // 14px
+$font-size-caption: $font-size-xs; // 12px
+
+// Line Heights
+$line-height-tight: 1.25;
+$line-height-snug: 1.375;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.625;
+
+// -----------------------------------------------------------------------------
+// Z-INDEX LEVELS (Layering System)
+// -----------------------------------------------------------------------------
+$z-index-base: 0;
+$z-index-lv1: 1;
+$z-index-lv2: 2;
+$z-index-lv3: 10;
+$z-index-lv4: 20;
+$z-index-lv5: 100;
+$z-index-modal: 1000;
+$z-index-tooltip: 1100;
+
+// -----------------------------------------------------------------------------
+// BORDER RADIUS
+// -----------------------------------------------------------------------------
+$border-radius-none: 0;
+$border-radius-sm: 2px;
+$border-radius-base: 4px;
+$border-radius-md: 6px;
+$border-radius-lg: 8px;
+$border-radius-xl: 12px;
+$border-radius-2xl: 16px;
+$border-radius-full: 50%;
+
+// -----------------------------------------------------------------------------
+// SHADOWS (Elevation System)
+// -----------------------------------------------------------------------------
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+// -----------------------------------------------------------------------------
+// TRANSITIONS (Animation System)
+// -----------------------------------------------------------------------------
+$transition-duration-fast: 150ms;
+$transition-duration-base: 300ms;
+$transition-duration-slow: 500ms;
+
+$transition-timing-ease: ease;
+$transition-timing-ease-in: ease-in;
+$transition-timing-ease-out: ease-out;
+$transition-timing-ease-in-out: ease-in-out;
+
+// Common transition combinations
+$transition-base: all $transition-duration-base $transition-timing-ease-in-out;
+$transition-colors: color $transition-duration-base $transition-timing-ease-in-out, 
+                   background-color $transition-duration-base $transition-timing-ease-in-out, 
+                   border-color $transition-duration-base $transition-timing-ease-in-out;

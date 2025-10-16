@@ -1,0 +1,432 @@
+@use 'variables' as *;
+
+// =============================================================================
+// SPACING UTILITIES
+// Based on 4px grid system (from _variables.scss)
+// =============================================================================
+
+// Spacing scale from variables:
+// $spacing-0: 0
+// $spacing-1: 4px
+// $spacing-2: 8px  
+// $spacing-3: 12px
+// $spacing-4: 16px
+// $spacing-5: 20px
+// $spacing-6: 24px
+// $spacing-7: 28px
+// $spacing-8: 32px
+// $spacing-10: 40px
+// $spacing-12: 48px
+// $spacing-16: 64px
+// $spacing-20: 80px
+// $spacing-24: 96px
+// $spacing-32: 128px
+
+// =============================================================================
+// MARGIN UTILITIES
+// =============================================================================
+
+// All sides margin
+.m-0 { margin: $spacing-0; }
+.m-1 { margin: $spacing-1; }
+.m-2 { margin: $spacing-2; }
+.m-3 { margin: $spacing-3; }
+.m-4 { margin: $spacing-4; }
+.m-5 { margin: $spacing-5; }
+.m-6 { margin: $spacing-6; }
+.m-7 { margin: $spacing-7; }
+.m-8 { margin: $spacing-8; }
+.m-10 { margin: $spacing-10; }
+.m-12 { margin: $spacing-12; }
+.m-16 { margin: $spacing-16; }
+.m-20 { margin: $spacing-20; }
+.m-24 { margin: $spacing-24; }
+.m-32 { margin: $spacing-32; }
+
+// Margin auto
+.m-auto { margin: auto; }
+
+// Horizontal margins (left + right)
+.mx-0 { margin-left: $spacing-0; margin-right: $spacing-0; }
+.mx-1 { margin-left: $spacing-1; margin-right: $spacing-1; }
+.mx-2 { margin-left: $spacing-2; margin-right: $spacing-2; }
+.mx-3 { margin-left: $spacing-3; margin-right: $spacing-3; }
+.mx-4 { margin-left: $spacing-4; margin-right: $spacing-4; }
+.mx-5 { margin-left: $spacing-5; margin-right: $spacing-5; }
+.mx-6 { margin-left: $spacing-6; margin-right: $spacing-6; }
+.mx-7 { margin-left: $spacing-7; margin-right: $spacing-7; }
+.mx-8 { margin-left: $spacing-8; margin-right: $spacing-8; }
+.mx-10 { margin-left: $spacing-10; margin-right: $spacing-10; }
+.mx-12 { margin-left: $spacing-12; margin-right: $spacing-12; }
+.mx-16 { margin-left: $spacing-16; margin-right: $spacing-16; }
+.mx-20 { margin-left: $spacing-20; margin-right: $spacing-20; }
+.mx-24 { margin-left: $spacing-24; margin-right: $spacing-24; }
+.mx-32 { margin-left: $spacing-32; margin-right: $spacing-32; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+// Vertical margins (top + bottom)
+.my-0 { margin-top: $spacing-0; margin-bottom: $spacing-0; }
+.my-1 { margin-top: $spacing-1; margin-bottom: $spacing-1; }
+.my-2 { margin-top: $spacing-2; margin-bottom: $spacing-2; }
+.my-3 { margin-top: $spacing-3; margin-bottom: $spacing-3; }
+.my-4 { margin-top: $spacing-4; margin-bottom: $spacing-4; }
+.my-5 { margin-top: $spacing-5; margin-bottom: $spacing-5; }
+.my-6 { margin-top: $spacing-6; margin-bottom: $spacing-6; }
+.my-7 { margin-top: $spacing-7; margin-bottom: $spacing-7; }
+.my-8 { margin-top: $spacing-8; margin-bottom: $spacing-8; }
+.my-10 { margin-top: $spacing-10; margin-bottom: $spacing-10; }
+.my-12 { margin-top: $spacing-12; margin-bottom: $spacing-12; }
+.my-16 { margin-top: $spacing-16; margin-bottom: $spacing-16; }
+.my-20 { margin-top: $spacing-20; margin-bottom: $spacing-20; }
+.my-24 { margin-top: $spacing-24; margin-bottom: $spacing-24; }
+.my-32 { margin-top: $spacing-32; margin-bottom: $spacing-32; }
+
+// Top margins
+.mt-0 { margin-top: $spacing-0; }
+.mt-1 { margin-top: $spacing-1; }
+.mt-2 { margin-top: $spacing-2; }
+.mt-3 { margin-top: $spacing-3; }
+.mt-4 { margin-top: $spacing-4; }
+.mt-5 { margin-top: $spacing-5; }
+.mt-6 { margin-top: $spacing-6; }
+.mt-7 { margin-top: $spacing-7; }
+.mt-8 { margin-top: $spacing-8; }
+.mt-10 { margin-top: $spacing-10; }
+.mt-12 { margin-top: $spacing-12; }
+.mt-16 { margin-top: $spacing-16; }
+.mt-20 { margin-top: $spacing-20; }
+.mt-24 { margin-top: $spacing-24; }
+.mt-32 { margin-top: $spacing-32; }
+.mt-auto { margin-top: auto; }
+
+// Right margins
+.mr-0 { margin-right: $spacing-0; }
+.mr-1 { margin-right: $spacing-1; }
+.mr-2 { margin-right: $spacing-2; }
+.mr-3 { margin-right: $spacing-3; }
+.mr-4 { margin-right: $spacing-4; }
+.mr-5 { margin-right: $spacing-5; }
+.mr-6 { margin-right: $spacing-6; }
+.mr-7 { margin-right: $spacing-7; }
+.mr-8 { margin-right: $spacing-8; }
+.mr-10 { margin-right: $spacing-10; }
+.mr-12 { margin-right: $spacing-12; }
+.mr-16 { margin-right: $spacing-16; }
+.mr-20 { margin-right: $spacing-20; }
+.mr-24 { margin-right: $spacing-24; }
+.mr-32 { margin-right: $spacing-32; }
+.mr-auto { margin-right: auto; }
+
+// Bottom margins
+.mb-0 { margin-bottom: $spacing-0; }
+.mb-1 { margin-bottom: $spacing-1; }
+.mb-2 { margin-bottom: $spacing-2; }
+.mb-3 { margin-bottom: $spacing-3; }
+.mb-4 { margin-bottom: $spacing-4; }
+.mb-5 { margin-bottom: $spacing-5; }
+.mb-6 { margin-bottom: $spacing-6; }
+.mb-7 { margin-bottom: $spacing-7; }
+.mb-8 { margin-bottom: $spacing-8; }
+.mb-10 { margin-bottom: $spacing-10; }
+.mb-12 { margin-bottom: $spacing-12; }
+.mb-16 { margin-bottom: $spacing-16; }
+.mb-20 { margin-bottom: $spacing-20; }
+.mb-24 { margin-bottom: $spacing-24; }
+.mb-32 { margin-bottom: $spacing-32; }
+.mb-auto { margin-bottom: auto; }
+
+// Left margins
+.ml-0 { margin-left: $spacing-0; }
+.ml-1 { margin-left: $spacing-1; }
+.ml-2 { margin-left: $spacing-2; }
+.ml-3 { margin-left: $spacing-3; }
+.ml-4 { margin-left: $spacing-4; }
+.ml-5 { margin-left: $spacing-5; }
+.ml-6 { margin-left: $spacing-6; }
+.ml-7 { margin-left: $spacing-7; }
+.ml-8 { margin-left: $spacing-8; }
+.ml-10 { margin-left: $spacing-10; }
+.ml-12 { margin-left: $spacing-12; }
+.ml-16 { margin-left: $spacing-16; }
+.ml-20 { margin-left: $spacing-20; }
+.ml-24 { margin-left: $spacing-24; }
+.ml-32 { margin-left: $spacing-32; }
+.ml-auto { margin-left: auto; }
+
+// =============================================================================
+// PADDING UTILITIES
+// =============================================================================
+
+// All sides padding
+.p-0 { padding: $spacing-0; }
+.p-1 { padding: $spacing-1; }
+.p-2 { padding: $spacing-2; }
+.p-3 { padding: $spacing-3; }
+.p-4 { padding: $spacing-4; }
+.p-5 { padding: $spacing-5; }
+.p-6 { padding: $spacing-6; }
+.p-7 { padding: $spacing-7; }
+.p-8 { padding: $spacing-8; }
+.p-10 { padding: $spacing-10; }
+.p-12 { padding: $spacing-12; }
+.p-16 { padding: $spacing-16; }
+.p-20 { padding: $spacing-20; }
+.p-24 { padding: $spacing-24; }
+.p-32 { padding: $spacing-32; }
+
+// Horizontal padding (left + right)
+.px-0 { padding-left: $spacing-0; padding-right: $spacing-0; }
+.px-1 { padding-left: $spacing-1; padding-right: $spacing-1; }
+.px-2 { padding-left: $spacing-2; padding-right: $spacing-2; }
+.px-3 { padding-left: $spacing-3; padding-right: $spacing-3; }
+.px-4 { padding-left: $spacing-4; padding-right: $spacing-4; }
+.px-5 { padding-left: $spacing-5; padding-right: $spacing-5; }
+.px-6 { padding-left: $spacing-6; padding-right: $spacing-6; }
+.px-7 { padding-left: $spacing-7; padding-right: $spacing-7; }
+.px-8 { padding-left: $spacing-8; padding-right: $spacing-8; }
+.px-10 { padding-left: $spacing-10; padding-right: $spacing-10; }
+.px-12 { padding-left: $spacing-12; padding-right: $spacing-12; }
+.px-16 { padding-left: $spacing-16; padding-right: $spacing-16; }
+.px-20 { padding-left: $spacing-20; padding-right: $spacing-20; }
+.px-24 { padding-left: $spacing-24; padding-right: $spacing-24; }
+.px-32 { padding-left: $spacing-32; padding-right: $spacing-32; }
+
+// Vertical padding (top + bottom)
+.py-0 { padding-top: $spacing-0; padding-bottom: $spacing-0; }
+.py-1 { padding-top: $spacing-1; padding-bottom: $spacing-1; }
+.py-2 { padding-top: $spacing-2; padding-bottom: $spacing-2; }
+.py-3 { padding-top: $spacing-3; padding-bottom: $spacing-3; }
+.py-4 { padding-top: $spacing-4; padding-bottom: $spacing-4; }
+.py-5 { padding-top: $spacing-5; padding-bottom: $spacing-5; }
+.py-6 { padding-top: $spacing-6; padding-bottom: $spacing-6; }
+.py-7 { padding-top: $spacing-7; padding-bottom: $spacing-7; }
+.py-8 { padding-top: $spacing-8; padding-bottom: $spacing-8; }
+.py-10 { padding-top: $spacing-10; padding-bottom: $spacing-10; }
+.py-12 { padding-top: $spacing-12; padding-bottom: $spacing-12; }
+.py-16 { padding-top: $spacing-16; padding-bottom: $spacing-16; }
+.py-20 { padding-top: $spacing-20; padding-bottom: $spacing-20; }
+.py-24 { padding-top: $spacing-24; padding-bottom: $spacing-24; }
+.py-32 { padding-top: $spacing-32; padding-bottom: $spacing-32; }
+
+// Top padding
+.pt-0 { padding-top: $spacing-0; }
+.pt-1 { padding-top: $spacing-1; }
+.pt-2 { padding-top: $spacing-2; }
+.pt-3 { padding-top: $spacing-3; }
+.pt-4 { padding-top: $spacing-4; }
+.pt-5 { padding-top: $spacing-5; }
+.pt-6 { padding-top: $spacing-6; }
+.pt-7 { padding-top: $spacing-7; }
+.pt-8 { padding-top: $spacing-8; }
+.pt-10 { padding-top: $spacing-10; }
+.pt-12 { padding-top: $spacing-12; }
+.pt-16 { padding-top: $spacing-16; }
+.pt-20 { padding-top: $spacing-20; }
+.pt-24 { padding-top: $spacing-24; }
+.pt-32 { padding-top: $spacing-32; }
+
+// Right padding
+.pr-0 { padding-right: $spacing-0; }
+.pr-1 { padding-right: $spacing-1; }
+.pr-2 { padding-right: $spacing-2; }
+.pr-3 { padding-right: $spacing-3; }
+.pr-4 { padding-right: $spacing-4; }
+.pr-5 { padding-right: $spacing-5; }
+.pr-6 { padding-right: $spacing-6; }
+.pr-7 { padding-right: $spacing-7; }
+.pr-8 { padding-right: $spacing-8; }
+.pr-10 { padding-right: $spacing-10; }
+.pr-12 { padding-right: $spacing-12; }
+.pr-16 { padding-right: $spacing-16; }
+.pr-20 { padding-right: $spacing-20; }
+.pr-24 { padding-right: $spacing-24; }
+.pr-32 { padding-right: $spacing-32; }
+
+// Bottom padding
+.pb-0 { padding-bottom: $spacing-0; }
+.pb-1 { padding-bottom: $spacing-1; }
+.pb-2 { padding-bottom: $spacing-2; }
+.pb-3 { padding-bottom: $spacing-3; }
+.pb-4 { padding-bottom: $spacing-4; }
+.pb-5 { padding-bottom: $spacing-5; }
+.pb-6 { padding-bottom: $spacing-6; }
+.pb-7 { padding-bottom: $spacing-7; }
+.pb-8 { padding-bottom: $spacing-8; }
+.pb-10 { padding-bottom: $spacing-10; }
+.pb-12 { padding-bottom: $spacing-12; }
+.pb-16 { padding-bottom: $spacing-16; }
+.pb-20 { padding-bottom: $spacing-20; }
+.pb-24 { padding-bottom: $spacing-24; }
+.pb-32 { padding-bottom: $spacing-32; }
+
+// Left padding
+.pl-0 { padding-left: $spacing-0; }
+.pl-1 { padding-left: $spacing-1; }
+.pl-2 { padding-left: $spacing-2; }
+.pl-3 { padding-left: $spacing-3; }
+.pl-4 { padding-left: $spacing-4; }
+.pl-5 { padding-left: $spacing-5; }
+.pl-6 { padding-left: $spacing-6; }
+.pl-7 { padding-left: $spacing-7; }
+.pl-8 { padding-left: $spacing-8; }
+.pl-10 { padding-left: $spacing-10; }
+.pl-12 { padding-left: $spacing-12; }
+.pl-16 { padding-left: $spacing-16; }
+.pl-20 { padding-left: $spacing-20; }
+.pl-24 { padding-left: $spacing-24; }
+.pl-32 { padding-left: $spacing-32; }
+
+// =============================================================================
+// GAP UTILITIES (for Flexbox and Grid)
+// =============================================================================
+
+.gap-0 { gap: $spacing-0; }
+.gap-1 { gap: $spacing-1; }
+.gap-2 { gap: $spacing-2; }
+.gap-3 { gap: $spacing-3; }
+.gap-4 { gap: $spacing-4; }
+.gap-5 { gap: $spacing-5; }
+.gap-6 { gap: $spacing-6; }
+.gap-7 { gap: $spacing-7; }
+.gap-8 { gap: $spacing-8; }
+.gap-10 { gap: $spacing-10; }
+.gap-12 { gap: $spacing-12; }
+.gap-16 { gap: $spacing-16; }
+.gap-20 { gap: $spacing-20; }
+.gap-24 { gap: $spacing-24; }
+.gap-32 { gap: $spacing-32; }
+
+// Column gaps
+.gap-x-0 { column-gap: $spacing-0; }
+.gap-x-1 { column-gap: $spacing-1; }
+.gap-x-2 { column-gap: $spacing-2; }
+.gap-x-3 { column-gap: $spacing-3; }
+.gap-x-4 { column-gap: $spacing-4; }
+.gap-x-5 { column-gap: $spacing-5; }
+.gap-x-6 { column-gap: $spacing-6; }
+.gap-x-7 { column-gap: $spacing-7; }
+.gap-x-8 { column-gap: $spacing-8; }
+.gap-x-10 { column-gap: $spacing-10; }
+.gap-x-12 { column-gap: $spacing-12; }
+.gap-x-16 { column-gap: $spacing-16; }
+.gap-x-20 { column-gap: $spacing-20; }
+.gap-x-24 { column-gap: $spacing-24; }
+.gap-x-32 { column-gap: $spacing-32; }
+
+// Row gaps
+.gap-y-0 { row-gap: $spacing-0; }
+.gap-y-1 { row-gap: $spacing-1; }
+.gap-y-2 { row-gap: $spacing-2; }
+.gap-y-3 { row-gap: $spacing-3; }
+.gap-y-4 { row-gap: $spacing-4; }
+.gap-y-5 { row-gap: $spacing-5; }
+.gap-y-6 { row-gap: $spacing-6; }
+.gap-y-7 { row-gap: $spacing-7; }
+.gap-y-8 { row-gap: $spacing-8; }
+.gap-y-10 { row-gap: $spacing-10; }
+.gap-y-12 { row-gap: $spacing-12; }
+.gap-y-16 { row-gap: $spacing-16; }
+.gap-y-20 { row-gap: $spacing-20; }
+.gap-y-24 { row-gap: $spacing-24; }
+.gap-y-32 { row-gap: $spacing-32; }
+
+// =============================================================================
+// RESPONSIVE SPACING UTILITIES
+// =============================================================================
+
+// Mobile-first responsive margin utilities
+@media (min-width: $breakpoint-sm) {
+  .sm\:m-0 { margin: $spacing-0; }
+  .sm\:m-4 { margin: $spacing-4; }
+  .sm\:m-6 { margin: $spacing-6; }
+  .sm\:m-8 { margin: $spacing-8; }
+  .sm\:mx-auto { margin-left: auto; margin-right: auto; }
+  .sm\:my-8 { margin-top: $spacing-8; margin-bottom: $spacing-8; }
+}
+
+@media (min-width: $breakpoint-md) {
+  .md\:m-0 { margin: $spacing-0; }
+  .md\:m-6 { margin: $spacing-6; }
+  .md\:m-8 { margin: $spacing-8; }
+  .md\:m-12 { margin: $spacing-12; }
+  .md\:mx-auto { margin-left: auto; margin-right: auto; }
+  .md\:my-12 { margin-top: $spacing-12; margin-bottom: $spacing-12; }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .lg\:m-0 { margin: $spacing-0; }
+  .lg\:m-8 { margin: $spacing-8; }
+  .lg\:m-12 { margin: $spacing-12; }
+  .lg\:m-16 { margin: $spacing-16; }
+  .lg\:mx-auto { margin-left: auto; margin-right: auto; }
+  .lg\:my-16 { margin-top: $spacing-16; margin-bottom: $spacing-16; }
+}
+
+// Mobile-first responsive padding utilities
+@media (min-width: $breakpoint-sm) {
+  .sm\:p-0 { padding: $spacing-0; }
+  .sm\:p-4 { padding: $spacing-4; }
+  .sm\:p-6 { padding: $spacing-6; }
+  .sm\:p-8 { padding: $spacing-8; }
+  .sm\:px-6 { padding-left: $spacing-6; padding-right: $spacing-6; }
+  .sm\:py-8 { padding-top: $spacing-8; padding-bottom: $spacing-8; }
+}
+
+@media (min-width: $breakpoint-md) {
+  .md\:p-0 { padding: $spacing-0; }
+  .md\:p-6 { padding: $spacing-6; }
+  .md\:p-8 { padding: $spacing-8; }
+  .md\:p-12 { padding: $spacing-12; }
+  .md\:px-8 { padding-left: $spacing-8; padding-right: $spacing-8; }
+  .md\:py-12 { padding-top: $spacing-12; padding-bottom: $spacing-12; }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .lg\:p-0 { padding: $spacing-0; }
+  .lg\:p-8 { padding: $spacing-8; }
+  .lg\:p-12 { padding: $spacing-12; }
+  .lg\:p-16 { padding: $spacing-16; }
+  .lg\:px-12 { padding-left: $spacing-12; padding-right: $spacing-12; }
+  .lg\:py-16 { padding-top: $spacing-16; padding-bottom: $spacing-16; }
+}
+
+// =============================================================================
+// NEGATIVE MARGINS (for advanced layouts)
+// =============================================================================
+
+.-m-1 { margin: -#{$spacing-1}; }
+.-m-2 { margin: -#{$spacing-2}; }
+.-m-3 { margin: -#{$spacing-3}; }
+.-m-4 { margin: -#{$spacing-4}; }
+.-m-6 { margin: -#{$spacing-6}; }
+.-m-8 { margin: -#{$spacing-8}; }
+
+.-mx-1 { margin-left: -#{$spacing-1}; margin-right: -#{$spacing-1}; }
+.-mx-2 { margin-left: -#{$spacing-2}; margin-right: -#{$spacing-2}; }
+.-mx-4 { margin-left: -#{$spacing-4}; margin-right: -#{$spacing-4}; }
+.-mx-6 { margin-left: -#{$spacing-6}; margin-right: -#{$spacing-6}; }
+
+.-my-1 { margin-top: -#{$spacing-1}; margin-bottom: -#{$spacing-1}; }
+.-my-2 { margin-top: -#{$spacing-2}; margin-bottom: -#{$spacing-2}; }
+.-my-4 { margin-top: -#{$spacing-4}; margin-bottom: -#{$spacing-4}; }
+.-my-6 { margin-top: -#{$spacing-6}; margin-bottom: -#{$spacing-6}; }
+
+.-mt-1 { margin-top: -#{$spacing-1}; }
+.-mt-2 { margin-top: -#{$spacing-2}; }
+.-mt-4 { margin-top: -#{$spacing-4}; }
+.-mt-6 { margin-top: -#{$spacing-6}; }
+
+.-mr-1 { margin-right: -#{$spacing-1}; }
+.-mr-2 { margin-right: -#{$spacing-2}; }
+.-mr-4 { margin-right: -#{$spacing-4}; }
+.-mr-6 { margin-right: -#{$spacing-6}; }
+
+.-mb-1 { margin-bottom: -#{$spacing-1}; }
+.-mb-2 { margin-bottom: -#{$spacing-2}; }
+.-mb-4 { margin-bottom: -#{$spacing-4}; }
+.-mb-6 { margin-bottom: -#{$spacing-6}; }
+
+.-ml-1 { margin-left: -#{$spacing-1}; }
+.-ml-2 { margin-left: -#{$spacing-2}; }
+.-ml-4 { margin-left: -#{$spacing-4}; }
+.-ml-6 { margin-left: -#{$spacing-6}; }
