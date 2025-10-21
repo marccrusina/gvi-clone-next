@@ -5,19 +5,19 @@ import {
   handleInvalidateAndRefetch,
   handleReset,
   handleSyncWithQuery,
-} from '@/components/demo-events'
-import { useTestApiContent } from '@/components/useTestApiContent'
-import { testApiContentStore } from '@/stores/test-api-content-store'
+} from '@/components/test-api/demo-events'
+import { useContent } from '@/hooks/useContent'
+import { contentStore } from '@/stores/content-store'
 
 const TestApiContent = observer(() => {
   // Trigger the fetching of the data from Tanstack Query using this custom hook
-  useTestApiContent({
+  useContent({
     componentName: 'TestApiContent',
     enableLogging: true,
   })
 
-  const content = testApiContentStore.data
-  const error = testApiContentStore.error
+  const content = contentStore.data
+  const error = contentStore.error
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
@@ -35,24 +35,22 @@ const TestApiContent = observer(() => {
       >
         <h3>Current Status</h3>
         <p>
-          <strong>Store Status:</strong> {testApiContentStore.status}
+          <strong>Store Status:</strong> {contentStore.status}
         </p>
         <p>
-          <strong>Store Has Data:</strong>{' '}
-          {testApiContentStore.hasData ? 'Yes' : 'No'}
+          <strong>Store Has Data:</strong> {contentStore.hasData ? 'Yes' : 'No'}
         </p>
         <p>
           <strong>Store Is Loading:</strong>{' '}
-          {testApiContentStore.isLoading ? 'Yes' : 'No'}
+          {contentStore.isLoading ? 'Yes' : 'No'}
         </p>
         <p>
-          <strong>Store Error:</strong>{' '}
-          {testApiContentStore.error?.message || 'None'}
+          <strong>Store Error:</strong> {contentStore.error?.message || 'None'}
         </p>
         <p>
           <strong>Last Fetch Time:</strong>{' '}
-          {testApiContentStore.lastFetchTime
-            ? new Date(testApiContentStore.lastFetchTime).toLocaleString()
+          {contentStore.lastFetchTime
+            ? new Date(contentStore.lastFetchTime).toLocaleString()
             : 'Never'}
         </p>
       </div>
