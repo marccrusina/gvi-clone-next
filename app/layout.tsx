@@ -1,8 +1,8 @@
-import '@/app/globals.css'
+import '@/app/globals.scss'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import type { Metadata } from 'next'
 import QueryProvider from '@/components/QueryProvider'
-import { testApiContent } from '@/tanstack-query/api/test-api-content'
+import { contentQuery } from '@/tanstack-query/api/content'
 import { getQueryClient } from '@/tanstack-query/get-query-client'
 
 export const metadata: Metadata = {
@@ -18,10 +18,10 @@ export default async function RootLayout({
 }>) {
   const queryClient = getQueryClient()
 
-  void queryClient.prefetchQuery(testApiContent)
+  void queryClient.prefetchQuery(contentQuery)
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         <QueryProvider>
           <HydrationBoundary state={dehydrate(queryClient)}>
