@@ -1,5 +1,9 @@
-import { imageCrops } from '../constants/image-crops'
-import type { ImageDimensions, ImageRatio, SrcSetResult } from '../types/image'
+import { imageCrops } from '@/components/image/constants/image-crops'
+import type {
+  ImageDimensions,
+  ImageRatio,
+  SrcSetResult,
+} from '@/components/image/types/image'
 
 /**
  * Replaces crop template placeholders in image URLs

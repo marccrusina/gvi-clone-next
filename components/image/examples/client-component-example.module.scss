@@ -1,0 +1,69 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.productTile {
+  // Product tile styles can be added here if needed
+}
+
+.productImage {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.productTitle {
+  margin-top: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.errorMessage {
+  color: #ef4444;
+}
+
+.viewportAwareImage {
+  // Viewport aware image container styles
+}
+
+.viewportInfo {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.errorFallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16rem;
+  background-color: #e5e7eb;
+  border-radius: 0.5rem;
+  
+  .content {
+    text-align: center;
+  }
+}
+
+.errorTitle {
+  color: #ef4444;
+  margin-bottom: 0.5rem;
+}
+
+.errorDescription {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.aspectRatioContainer {
+  position: relative;
+  width: 100%;
+}
+
+.aspectRatioImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

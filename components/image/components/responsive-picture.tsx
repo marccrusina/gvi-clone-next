@@ -1,13 +1,16 @@
 import {
   getImageUrlFromMedia,
   type ResponsivePictureProps,
-} from '../types/image'
-import { getDefaultCropType, isValidCropType } from '../utils/image-config'
+} from '@/components/image/types/image'
+import {
+  getDefaultCropType,
+  isValidCropType,
+} from '@/components/image/utils/image-config'
 import {
   generateSizesAttribute,
   generateSrcSetString,
   generateSrcSets,
-} from '../utils/image-transforms'
+} from '@/components/image/utils/image-transforms'
 
 /**
  * ResponsivePicture component using native img element

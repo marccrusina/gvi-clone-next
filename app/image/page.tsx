@@ -10,6 +10,7 @@ import {
   getExtractedImages,
   getExtractedImagesByCategory,
 } from '@/data/mock-image-utils'
+import styles from './page.module.scss'
 
 export default function ImageGalleryPage() {
   const imageServerUrl = 'https://media.grandvision.it/cmsuat'
@@ -32,21 +33,11 @@ export default function ImageGalleryPage() {
       : getExtractedImagesByCategory(selectedSource)
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <style jsx>{`
-        .line-clamp-2 {
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-      `}</style>
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Image Gallery & Data Transformation
-          </h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <div className={styles.header}>
+          <h1 className={styles.title}>Image Gallery & Data Transformation</h1>
+          <p className={styles.description}>
             Showcasing responsive image components using real CMS data from
             mockImageResponse.json. Each image demonstrates different crop types
             and responsive behavior with actual content management system data.
@@ -55,11 +46,8 @@ export default function ImageGalleryPage() {
           </p>
 
           {/* View Mode Selector */}
-          <div className="max-w-md mx-auto mb-6">
-            <label
-              htmlFor={viewModeId}
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
+          <div className={styles.controls}>
+            <label htmlFor={viewModeId} className={styles.label}>
               Choose View Mode
             </label>
             <select
@@ -68,7 +56,7 @@ export default function ImageGalleryPage() {
               onChange={(e) =>
                 setViewMode(e.target.value as 'gallery' | 'transformation')
               }
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
+              className={styles.select}
             >
               <option value="gallery">Image Gallery</option>
               <option value="transformation">Data Transformation Demo</option>
@@ -77,18 +65,15 @@ export default function ImageGalleryPage() {
 
           {/* Image Source Selector - Only show in gallery mode */}
           {viewMode === 'gallery' && (
-            <div className="max-w-md mx-auto">
-              <label
-                htmlFor={selectId}
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
+            <div className={styles.controlGroup}>
+              <label htmlFor={selectId} className={styles.label}>
                 Choose Image Source
               </label>
               <select
                 id={selectId}
                 value={selectedSource}
                 onChange={(e) => setSelectedSource(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
+                className={styles.select}
               >
                 <option value="all">All Images ({allImages.length})</option>
                 {categories.map((category) => {
@@ -110,15 +95,15 @@ export default function ImageGalleryPage() {
         ) : (
           <>
             {/* Image Gallery Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className={styles.gallery}>
               {filteredImages.map((imageData) => (
                 <Link
                   key={imageData.id}
                   href={`/image/${imageData.id}`}
-                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200"
+                  className={styles.card}
                 >
                   {/* Image Preview */}
-                  <div className="aspect-video overflow-hidden">
+                  <div className={styles.imageContainer}>
                     <ResponsiveImage
                       media={imageData.media}
                       cropType={imageData.placements[0].cropType}
@@ -128,20 +113,18 @@ export default function ImageGalleryPage() {
                   </div>
 
                   {/* Card Content */}
-                  <div className="p-4">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
-                      {imageData.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                  <div className={styles.cardContent}>
+                    <h3 className={styles.cardTitle}>{imageData.title}</h3>
+                    <p className={styles.cardDescription}>
                       {imageData.description}
                     </p>
 
                     {/* Categories and Tags */}
-                    <div className="flex flex-wrap gap-2 mb-3">
+                    <div className={styles.tags}>
                       {imageData.allCategories.slice(0, 2).map((category) => (
                         <span
                           key={category}
-                          className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded"
+                          className={`${styles.tag} ${styles.primary}`}
                         >
                           {category}
                         </span>
@@ -149,7 +132,7 @@ export default function ImageGalleryPage() {
                       {imageData.allTags.slice(0, 2).map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded"
+                          className={`${styles.tag} ${styles.secondary}`}
                         >
                           {tag}
                         </span>
@@ -157,18 +140,14 @@ export default function ImageGalleryPage() {
                     </div>
 
                     {/* Technical Details */}
-                    <div className="text-xs text-gray-500 space-y-1">
-                      <div className="font-mono">
-                        Placements: {imageData.placements.length}
-                      </div>
-                      <div className="font-mono">ID: {imageData.imageId}</div>
+                    <div className={styles.technicalDetails}>
+                      <div>Placements: {imageData.placements.length}</div>
+                      <div>ID: {imageData.imageId}</div>
                     </div>
 
                     {/* View Details Link */}
-                    <div className="mt-3 pt-3 border-t border-gray-100">
-                      <span className="text-blue-600 text-sm font-medium">
-                        View Details →
-                      </span>
+                    <div className={styles.viewDetails}>
+                      <span>View Details →</span>
                     </div>
                   </div>
                 </Link>
@@ -179,47 +158,49 @@ export default function ImageGalleryPage() {
 
         {/* Summary - Only show in gallery mode */}
         {viewMode === 'gallery' && (
-          <div className="mt-12 bg-white rounded-lg shadow-md p-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+          <div className={styles.summary}>
+            <h2 className={styles.summaryTitle}>
               {selectedSource === 'all'
                 ? 'Gallery Summary'
                 : `Filtered Results - ${selectedSource}`}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600 mb-2">
+            <div className={styles.summaryGrid}>
+              <div className={styles.summaryItem}>
+                <div className={`${styles.summaryValue} ${styles.blue}`}>
                   {filteredImages.length}
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className={styles.summaryLabel}>
                   {selectedSource === 'all'
                     ? 'Total Images'
                     : 'Filtered Images'}
                 </div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 mb-2">
+              <div className={styles.summaryItem}>
+                <div className={`${styles.summaryValue} ${styles.green}`}>
                   {selectedSource === 'all'
                     ? extractedImageStats.totalCategories
                     : 1}
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className={styles.summaryLabel}>
                   {selectedSource === 'all'
                     ? 'Categories'
                     : 'Selected Category'}
                 </div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-purple-600 mb-2">3</div>
-                <div className="text-sm text-gray-600">Component Types</div>
+              <div className={styles.summaryItem}>
+                <div className={`${styles.summaryValue} ${styles.purple}`}>
+                  3
+                </div>
+                <div className={styles.summaryLabel}>Component Types</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-orange-600 mb-2">
+              <div className={styles.summaryItem}>
+                <div className={`${styles.summaryValue} ${styles.orange}`}>
                   {selectedSource === 'all'
                     ? extractedImageStats.totalTags
                     : new Set(filteredImages.flatMap((img) => img.allTags))
                         .size}
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className={styles.summaryLabel}>
                   {selectedSource === 'all' ? 'Unique Tags' : 'Filtered Tags'}
                 </div>
               </div>

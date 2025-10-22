@@ -1,17 +1,18 @@
-import ResponsiveImage from '../components/responsive-image'
-import type { Media } from '../types/image'
+import ResponsiveImage from '@/components/image/components/responsive-image'
+import type { Media } from '@/components/image/types/image'
+import styles from './server-component-example.module.scss'
 
 // Example server component usage
 export default function Banner({ placement }: { placement: { media: Media } }) {
   return (
-    <section className="hero-banner">
+    <section className={styles.heroBanner}>
       <ResponsiveImage
         media={placement.media}
         cropType="FULL_WIDTH_BANNER"
         alt="Hero banner"
         imageServerUrl={process.env.IMAGE_SERVER_URL || ''}
         priority
-        className="w-full h-auto"
+        className={styles.productImage}
       />
     </section>
   )
@@ -24,18 +25,18 @@ export function ProductGrid({
   products: Array<{ media: Media; title: string }>
 }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className={styles.productGrid}>
       {products.map((product) => (
-        <div key={product.title} className="product-card">
+        <div key={product.title} className={styles.productCard}>
           <ResponsiveImage
             media={product.media}
             cropType="PLP_TWO_TILES"
             alt={product.title}
             imageServerUrl={process.env.IMAGE_SERVER_URL || ''}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="w-full h-auto rounded-lg"
+            className={styles.productImage}
           />
-          <h3 className="mt-2 text-lg font-semibold">{product.title}</h3>
+          <h3 className={styles.productTitle}>{product.title}</h3>
         </div>
       ))}
     </div>
@@ -50,7 +51,7 @@ export function LayoutExamples() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className={styles.layoutExamples}>
       {/* Full width banner */}
       <ResponsiveImage
         media={media}
@@ -69,7 +70,7 @@ export function LayoutExamples() {
       />
 
       {/* Square boards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className={styles.squareGrid}>
         {['a', 'b', 'c', 'd'].map((id, idx) => (
           <ResponsiveImage
             key={`square-board-${id}`}

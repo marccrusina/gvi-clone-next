@@ -5,6 +5,7 @@ import { imageCrops } from '@/components/image/constants/image-crops'
 import { generateSrcSets } from '@/components/image/utils/image-transforms'
 import type { ExtractedImageData } from '@/data/mock-image-utils'
 import { getExtractedImages } from '@/data/mock-image-utils'
+import styles from './DataTransformationDemo.module.scss'
 
 interface TransformationStep {
   step: string
@@ -192,12 +193,10 @@ ${JSON.stringify(transformedUrls, null, 2)}`,
   const transformationSteps = getTransformationSteps()
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
-      <div className="mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">
-          Data Transformation Pipeline
-        </h2>
-        <p className="text-lg text-gray-600 mb-6">
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h2 className={styles.title}>Data Transformation Pipeline</h2>
+        <p className={styles.description}>
           This demo shows how raw CMS data is transformed through multiple steps
           to become responsive image component props. Each step demonstrates the
           data flow and transformations.
@@ -205,16 +204,11 @@ ${JSON.stringify(transformedUrls, null, 2)}`,
       </div>
 
       {/* Controls */}
-      <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <h3 className="text-xl font-semibold text-gray-900 mb-4">
-          Configuration
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label
-              htmlFor={imageSelectId}
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
+      <div className={styles.controls}>
+        <h3 className={styles.controlsTitle}>Configuration</h3>
+        <div className={styles.controlsGrid}>
+          <div className={styles.controlGroup}>
+            <label htmlFor={imageSelectId} className={styles.label}>
               Select Image
             </label>
             <select
@@ -224,7 +218,7 @@ ${JSON.stringify(transformedUrls, null, 2)}`,
                 const image = allImages.find((img) => img.id === e.target.value)
                 setSelectedImage(image || null)
               }}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className={styles.select}
             >
               {allImages.map((image) => (
                 <option key={image.id} value={image.id}>
@@ -233,18 +227,15 @@ ${JSON.stringify(transformedUrls, null, 2)}`,
               ))}
             </select>
           </div>
-          <div>
-            <label
-              htmlFor={cropTypeSelectId}
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
+          <div className={styles.controlGroup}>
+            <label htmlFor={cropTypeSelectId} className={styles.label}>
               Select Crop Type
             </label>
             <select
               id={cropTypeSelectId}
               value={selectedCropType}
               onChange={(e) => setSelectedCropType(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className={styles.select}
             >
               {Object.keys(imageCrops).map((cropType) => (
                 <option key={cropType} value={cropType}>
@@ -257,40 +248,31 @@ ${JSON.stringify(transformedUrls, null, 2)}`,
       </div>
 
       {/* Transformation Steps */}
-      <div className="space-y-6">
+      <div className={styles.steps}>
         {transformationSteps.map((step) => (
-          <div
-            key={step.step}
-            className="bg-white rounded-lg shadow-md overflow-hidden"
-          >
-            <div className="bg-blue-50 px-6 py-4 border-b border-blue-200">
-              <h3 className="text-lg font-semibold text-blue-900">
-                {step.step}
-              </h3>
-              <p className="text-blue-700 mt-1">{step.description}</p>
+          <div key={step.step} className={styles.stepCard}>
+            <div className={styles.stepHeader}>
+              <h3 className={styles.stepTitle}>{step.step}</h3>
+              <p className={styles.stepDescription}>{step.description}</p>
             </div>
 
-            <div className="p-6">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className={styles.stepContent}>
+              <div className={styles.stepGrid}>
                 {/* Input */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
-                    Input
-                  </h4>
-                  <div className="bg-gray-50 rounded-md p-4">
-                    <pre className="text-sm text-gray-800 overflow-x-auto">
+                <div className={styles.inputOutput}>
+                  <h4 className={styles.inputOutputTitle}>Input</h4>
+                  <div className={styles.inputContainer}>
+                    <pre className={styles.json}>
                       {JSON.stringify(step.input, null, 2)}
                     </pre>
                   </div>
                 </div>
 
                 {/* Output */}
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
-                    Output
-                  </h4>
-                  <div className="bg-green-50 rounded-md p-4">
-                    <pre className="text-sm text-gray-800 overflow-x-auto">
+                <div className={styles.inputOutput}>
+                  <h4 className={styles.inputOutputTitle}>Output</h4>
+                  <div className={styles.outputContainer}>
+                    <pre className={styles.json}>
                       {JSON.stringify(step.output, null, 2)}
                     </pre>
                   </div>
@@ -299,14 +281,10 @@ ${JSON.stringify(transformedUrls, null, 2)}`,
 
               {/* Code Example */}
               {step.code && (
-                <div className="mt-6">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-2 uppercase tracking-wide">
-                    Code Example
-                  </h4>
-                  <div className="bg-gray-900 rounded-md p-4">
-                    <pre className="text-sm text-green-400 overflow-x-auto">
-                      {step.code}
-                    </pre>
+                <div className={styles.codeSection}>
+                  <h4 className={styles.inputOutputTitle}>Code Example</h4>
+                  <div className={styles.codeContainer}>
+                    <pre className={styles.code}>{step.code}</pre>
                   </div>
                 </div>
               )}
@@ -316,28 +294,26 @@ ${JSON.stringify(transformedUrls, null, 2)}`,
       </div>
 
       {/* Summary */}
-      <div className="mt-8 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg p-6">
-        <h3 className="text-xl font-semibold text-gray-900 mb-4">
-          Transformation Summary
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="text-center">
-            <div className="text-2xl font-bold text-blue-600 mb-1">
+      <div className={styles.summary}>
+        <h3 className={styles.summaryTitle}>Transformation Summary</h3>
+        <div className={styles.summaryGrid}>
+          <div className={styles.summaryItem}>
+            <div className={`${styles.summaryValue} ${styles.blue}`}>
               {transformationSteps.length}
             </div>
-            <div className="text-sm text-gray-600">Transformation Steps</div>
+            <div className={styles.summaryLabel}>Transformation Steps</div>
           </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-green-600 mb-1">
+          <div className={styles.summaryItem}>
+            <div className={`${styles.summaryValue} ${styles.green}`}>
               {Object.keys(imageCrops).length}
             </div>
-            <div className="text-sm text-gray-600">Available Crop Types</div>
+            <div className={styles.summaryLabel}>Available Crop Types</div>
           </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-purple-600 mb-1">
+          <div className={styles.summaryItem}>
+            <div className={`${styles.summaryValue} ${styles.purple}`}>
               {allImages.length}
             </div>
-            <div className="text-sm text-gray-600">Total Images</div>
+            <div className={styles.summaryLabel}>Total Images</div>
           </div>
         </div>
       </div>

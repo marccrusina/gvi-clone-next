@@ -1,0 +1,52 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.heroBanner {
+  // Hero banner styles can be added here if needed
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  
+  @include tablet-portrait-up {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @include tablet-landscape-up {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.productCard {
+  // Product card styles can be added here if needed
+}
+
+.productImage {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.productTitle {
+  margin-top: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.layoutExamples {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.squareGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  
+  @include tablet-portrait-up {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

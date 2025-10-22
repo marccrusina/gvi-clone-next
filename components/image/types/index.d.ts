@@ -1,21 +1,19 @@
 // Re-export all types for easy importing
-export * from './image'
 
 // Main component exports
-export { default as ResponsiveImage } from '../components/responsive-image'
-export { default as ResponsiveImageLazy } from '../components/responsive-image-lazy'
-export { default as ResponsivePicture } from '../components/responsive-picture'
+export { default as ResponsiveImage } from '@/components/image/components/responsive-image'
+export { default as ResponsiveImageLazy } from '@/components/image/components/responsive-image-lazy'
+export { default as ResponsivePicture } from '@/components/image/components/responsive-picture'
+// Constants exports
+export { imageCrops } from '@/components/image/constants/image-crops'
 
 // Hook exports
 export {
   useImageSrcset,
   useImageSrcsetWithStates,
   useResponsiveImage,
-} from '../hooks/use-image-srcset'
-
+} from '@/components/image/hooks/use-image-srcset'
+export * from '@/components/image/utils/image-config'
 // Utility exports
-export * from '../utils/image-transforms'
-export * from '../utils/image-config'
-
-// Constants exports
-export { imageCrops } from '../constants/image-crops'
+export * from '@/components/image/utils/image-transforms'
+export * from './image'

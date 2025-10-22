@@ -1,14 +1,15 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import ResponsiveImageLazy from '../components/responsive-image-lazy'
-import ResponsivePicture from '../components/responsive-picture'
+import ResponsiveImageLazy from '@/components/image/components/responsive-image-lazy'
+import ResponsivePicture from '@/components/image/components/responsive-picture'
 import {
   useImageSrcset,
   useImageSrcsetWithStates,
   useResponsiveImage,
-} from '../hooks/use-image-srcset'
-import type { Media } from '../types/image'
+} from '@/components/image/hooks/use-image-srcset'
+import type { Media } from '@/components/image/types/image'
+import styles from './client-component-example.module.scss'
 
 // Example client component with lazy loading
 export function ProductTile({
@@ -17,7 +18,7 @@ export function ProductTile({
   product: { media: Media; title: string }
 }) {
   return (
-    <div className="product-tile">
+    <div className={styles.productTile}>
       <ResponsiveImageLazy
         media={product.media}
         cropType="PLP_TWO_TILES"
@@ -25,9 +26,9 @@ export function ProductTile({
         imageServerUrl={process.env.NEXT_PUBLIC_IMAGE_SERVER_URL || ''}
         showSkeleton
         onLoad={() => console.log('Image loaded')}
-        className="w-full h-auto rounded-lg"
+        className={styles.productImage}
       />
-      <h3 className="mt-2 text-lg font-semibold">{product.title}</h3>
+      <h3 className={styles.productTitle}>{product.title}</h3>
     </div>
   )
 }
@@ -47,7 +48,7 @@ export function CustomImageComponent({
   )
 
   if (error) {
-    return <div className="text-red-500">Error: {error}</div>
+    return <div className={styles.errorMessage}>Error: {error}</div>
   }
 
   return (
@@ -59,7 +60,7 @@ export function CustomImageComponent({
       alt="Product visual"
       width={dimensions?.width || 800}
       height={dimensions?.height || 600}
-      className="w-full h-auto"
+      className={styles.productImage}
     />
   )
 }
@@ -89,14 +90,14 @@ export function ViewportAwareImage({
   )
 
   return (
-    <div className="viewport-aware-image">
+    <div className={styles.viewportAwareImage}>
       {/** biome-ignore lint/performance/noImgElement: <TODO: add explanation here> */}
       <img
         src={currentImage}
         alt="Product in current viewport"
-        className="w-full h-auto"
+        className={styles.productImage}
       />
-      <div className="mt-2 text-sm text-gray-600">
+      <div className={styles.viewportInfo}>
         Current viewport:{' '}
         {isMobile ? 'Mobile' : isTablet ? 'Tablet' : 'Desktop'} ({currentWidth}
         px)
@@ -121,10 +122,10 @@ export function ImageWithFallback({
 
   if (hasError) {
     return (
-      <div className="flex items-center justify-center h-64 bg-gray-200 rounded-lg">
-        <div className="text-center">
-          <div className="text-red-500 mb-2">Failed to load image</div>
-          <div className="text-sm text-gray-600">{error}</div>
+      <div className={styles.errorFallback}>
+        <div className={styles.content}>
+          <div className={styles.errorTitle}>Failed to load image</div>
+          <div className={styles.errorDescription}>{error}</div>
         </div>
       </div>
     )
@@ -150,7 +151,7 @@ export function NativePictureExample({ media }: { media: Media }) {
       alt="Native picture element"
       imageServerUrl={process.env.NEXT_PUBLIC_IMAGE_SERVER_URL || ''}
       loading="lazy"
-      className="w-full h-auto"
+      className={styles.productImage}
     />
   )
 }
@@ -164,14 +165,14 @@ export function AspectRatioImage({ media }: { media: Media }) {
   )
 
   return (
-    <div className="relative w-full" style={{ aspectRatio }}>
+    <div className={styles.aspectRatioContainer} style={{ aspectRatio }}>
       {/** biome-ignore lint/performance/noImgElement: <TODO: add explanation here> */}
       <img
         src={srcSets.mobile}
         srcSet={`${srcSets.mobile} 375w, ${srcSets.tabletP} 601w, ${srcSets.tabletL} 1024w, ${srcSets.deskS} 1280w, ${srcSets.deskL} 1440w`}
         sizes="(max-width: 600px) 100vw, (max-width: 1023px) 100vw, (max-width: 1279px) 100vw, (max-width: 1439px) 100vw, 100vw"
         alt="Decorative aspect-ratio example"
-        className="absolute inset-0 w-full h-full object-cover"
+        className={styles.aspectRatioImage}
       />
     </div>
   )

@@ -24,6 +24,11 @@
       "@/libs/*": ["./libs/*"],
       "@/stores/*": ["./stores/*"],
       "@/tanstack-query/*": ["./tanstack-query/*"],
+      "@/hooks/*": ["./hooks/*"],
+      "@/constants/*": ["./constants/*"],
+      "@/data/*": ["./data/*"],
+      "@/styles/*": ["./styles/*"],
+      "@/types/*": ["./types/*"],
       "@/*": ["./*"]
     }
   },

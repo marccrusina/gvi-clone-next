@@ -4,9 +4,12 @@ import { useEffect, useRef, useState } from 'react'
 import {
   getImageUrlFromMedia,
   type ResponsiveImageLazyProps,
-} from '../types/image'
-import { getDefaultCropType, isValidCropType } from '../utils/image-config'
-import { generateSrcSets } from '../utils/image-transforms'
+} from '@/components/image/types/image'
+import {
+  getDefaultCropType,
+  isValidCropType,
+} from '@/components/image/utils/image-config'
+import { generateSrcSets } from '@/components/image/utils/image-transforms'
 
 /**
  * Skeleton component for loading state

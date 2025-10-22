@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Turbopack configuration
+  turbopack: {
+    // Turbopack-specific configurations can be added here if needed
+    // Path aliases are handled by TypeScript configuration
+  },
 }
 
 export default nextConfig

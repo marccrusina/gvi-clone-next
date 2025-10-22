@@ -1,4 +1,4 @@
-import type { ImageCrops } from '../types/image'
+import type { ImageCrops } from '@/components/image/types/image'
 
 export const imageCrops: ImageCrops = {
   FULL_WIDTH_BANNER: {

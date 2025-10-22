@@ -1,6 +1,12 @@
-import { getImageUrlFromMedia, type ResponsiveImageProps } from '../types/image'
-import { getDefaultCropType, isValidCropType } from '../utils/image-config'
-import { generateSrcSets } from '../utils/image-transforms'
+import {
+  getImageUrlFromMedia,
+  type ResponsiveImageProps,
+} from '@/components/image/types/image'
+import {
+  getDefaultCropType,
+  isValidCropType,
+} from '@/components/image/utils/image-config'
+import { generateSrcSets } from '@/components/image/utils/image-transforms'
 
 /**
  * React Server Component for responsive images using native img element
