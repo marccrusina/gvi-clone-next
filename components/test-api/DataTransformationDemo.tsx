@@ -8,8 +8,8 @@ import { getExtractedImages } from '@/data/mock-image-utils'
 
 interface TransformationStep {
   step: string
-  input: Record<string, unknown>
-  output: Record<string, unknown>
+  input: unknown
+  output: unknown
   description: string
   code?: string
 }
