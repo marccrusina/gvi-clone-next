@@ -1,11 +1,11 @@
 'use client'
 
-import DemoPageWrapper from '@/components/DemoPageWrapper'
-import type { ApiCarouselPlacement } from '@/types/carousel'
+import type { ApiCarouselPlacement } from '@/components/carousel/types/carousel'
 import {
   transformCarousel,
   transformMultipleCarousels,
-} from '@/utils/carousel-transformer'
+} from '@/components/carousel/utils/carousel-transformer'
+import DemoPageWrapper from '@/components/demo/components/page-wrapper'
 
 /**
  * Carousel Transformer Demo Page

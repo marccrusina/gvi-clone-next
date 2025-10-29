@@ -1,4 +1,5 @@
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
+import styles from './page-wrapper.module.scss'
 
 interface DemoPageWrapperProps {
   children: ReactNode
@@ -10,12 +11,8 @@ interface DemoPageWrapperProps {
  */
 export default function DemoPageWrapper({ children }: DemoPageWrapperProps) {
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f8f9fa', padding: '32px 0' }}>
-      <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '0 16px' }}>
-        <div style={{ marginBottom: '32px' }}>
-          {children}
-        </div>
-      </div>
+    <div className={styles.wrapper}>
+      <div className={styles.content}>{children}</div>
     </div>
   )
 }

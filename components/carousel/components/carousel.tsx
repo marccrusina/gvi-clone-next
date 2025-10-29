@@ -5,11 +5,11 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import '@glidejs/glide/dist/css/glide.core.min.css'
 import '@/styles/carousel.scss'
 
-import { useBreakpoints } from '@/hooks/useBreakpoints'
 import type {
   GlideCarouselProps,
   ProcessedCarouselItem,
-} from '@/types/carousel'
+} from '@/components/carousel/types/carousel'
+import { useBreakpoints } from '@/hooks/useBreakpoints'
 
 interface CarouselComponentProps extends Omit<GlideCarouselProps, 'items'> {
   items?: ProcessedCarouselItem[]

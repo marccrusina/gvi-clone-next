@@ -1,8 +1,8 @@
 'use client'
 
-import Carousel from '@/components/Carousel'
-import DemoPageWrapper from '@/components/DemoPageWrapper'
-import type { ProcessedCarouselItem } from '@/types/carousel'
+import Carousel from '@/components/carousel/components/carousel'
+import type { ProcessedCarouselItem } from '@/components/carousel/types/carousel'
+import DemoPageWrapper from '@/components/demo/components/page-wrapper'
 
 /**
  * Carousel Demo Page

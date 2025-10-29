@@ -9,7 +9,7 @@ import type {
   CarouselConfig,
   GlideConfig,
   ProcessedCarouselItem,
-} from '@/types/carousel'
+} from '@/components/carousel/types/carousel'
 
 /**
  * Get all items, flattening any nested teasableItems
