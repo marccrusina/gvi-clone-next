@@ -1,0 +1,35 @@
+#!/usr/bin/env sh
+
+echo "🔍 Running pre-push checks..."
+
+# Function to run command and handle errors
+run_check() {
+  local command="$1"
+  local description="$2"
+  
+  echo "📋 $description..."
+  if ! eval "$command"; then
+    echo "❌ $description failed. Please fix the issues before pushing."
+    exit 1
+  fi
+  echo "✅ $description passed!"
+}
+
+# Check if we're in a git repository
+if ! git rev-parse --git-dir > /dev/null 2>&1; then
+  echo "❌ Not in a git repository. Aborting pre-push checks."
+  exit 1
+fi
+
+# Check if node_modules exists
+if [ ! -d "node_modules" ]; then
+  echo "⚠️  node_modules not found. Installing dependencies..."
+  npm install
+fi
+
+# Run all checks
+run_check "npm run biome-check" "Biome check"
+run_check "npm run type-check" "TypeScript type check"
+run_check "npm run test" "Tests"
+
+echo "🎉 All pre-push checks passed! Ready to push."
