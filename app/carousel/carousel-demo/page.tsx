@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Carousel from '@/components/carousel/components/carousel'
 import type { ProcessedCarouselItem } from '@/components/carousel/types/carousel'
 import DemoPageWrapper from '@/components/demo/components/page-wrapper'
@@ -9,6 +10,19 @@ import DemoPageWrapper from '@/components/demo/components/page-wrapper'
  * Demonstrates the common Carousel component with various configurations
  */
 export default function CarouselDemoPage() {
+  const [isNoWrapper, setIsNoWrapper] = useState(false)
+
+  useEffect(() => {
+    const checkNoWrapper = () => {
+      setIsNoWrapper(window.innerWidth <= 1439)
+    }
+
+    checkNoWrapper()
+    window.addEventListener('resize', checkNoWrapper)
+
+    return () => window.removeEventListener('resize', checkNoWrapper)
+  }, [])
+
   // Sample hero carousel data
   const heroItems: ProcessedCarouselItem[] = [
     {
@@ -373,8 +387,8 @@ export default function CarouselDemoPage() {
     </div>
   )
 
-  return (
-    <DemoPageWrapper>
+  const content = (
+    <>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Carousel Demo</h1>
         <p className="text-lg text-gray-600">
@@ -450,6 +464,13 @@ export default function CarouselDemoPage() {
           </div>
         </section>
       </div>
-    </DemoPageWrapper>
+    </>
   )
+
+  // Remove wrapper on mobile (500px and below)
+  if (isNoWrapper) {
+    return content
+  }
+
+  return <DemoPageWrapper>{content}</DemoPageWrapper>
 }
