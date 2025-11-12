@@ -345,5 +345,8 @@ export const transformButtonPropsWithDefaults = (
   defaults: Partial<ButtonProps> = {},
 ): Partial<ButtonProps> => {
   const transformed = transformButtonProps(apiData)
-  return { ...defaults, ...transformed }
+  const filteredTransformed = Object.fromEntries(
+    Object.entries(transformed).filter(([_key, value]) => value !== undefined),
+  )
+  return { ...defaults, ...filteredTransformed }
 }
