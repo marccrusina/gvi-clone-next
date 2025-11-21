@@ -1,10 +1,13 @@
 export const API_ENDPOINTS = {
-  CONTENT:
-    'https://uat-api.grandvision.it/api/v1/cms/live/home/content/grand-vision/it/it?storeId=110201&langId=-4',
+  CONTENT: '/api/proxy-gv?type=content',
+  HEADER: '/api/proxy-gv?type=header',
+  FOOTER: '/api/proxy-gv?type=footer',
 } as const
 
 export const QUERY_KEYS = {
   CONTENT: ['content'] as const,
+  HEADER: ['header'] as const,
+  FOOTER: ['footer'] as const,
 } as const
 
 export const FALLBACK_DATA = {

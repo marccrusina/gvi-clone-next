@@ -1,6 +1,7 @@
 import '@/app/globals.scss'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import type { Metadata } from 'next'
+import ContentLoader from '@/components/ContentLoader'
 import QueryProvider from '@/components/QueryProvider'
 import { contentQuery } from '@/tanstack-query/api/content'
 import { getQueryClient } from '@/tanstack-query/get-query-client'
@@ -25,6 +26,7 @@ export default async function RootLayout({
       <body>
         <QueryProvider>
           <HydrationBoundary state={dehydrate(queryClient)}>
+            <ContentLoader />
             {children}
           </HydrationBoundary>
         </QueryProvider>
