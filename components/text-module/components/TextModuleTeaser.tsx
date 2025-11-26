@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import type React from 'react'
+import Button from '@/components/button/Button'
 import useCmsTeaserBanner from '@/hooks/useCmsTeaserBanner'
 import {
   ILXTeaser,
@@ -57,9 +58,14 @@ const TextModuleTeaser: React.FC<{
         {callToActionSettings && callToActionSettings.length > 0 && (
           <div className={styles.ctaContent}>
             {callToActionSettings.map((actionSetting: ITeaserCallToAction) => (
-              <button type="button" key={actionSetting.callToActionHash}>
-                {actionSetting.callToActionText}
-              </button>
+              <Button
+                key={actionSetting.callToActionHash}
+                variant={'primary'}
+                fillType={'fill'}
+                size={'medium'}
+                fullwidth={false}
+                labelText={actionSetting.callToActionText}
+              />
               // TODO: Re-enable once CmsCta component is available
               //   <CmsCta
               //     actionSettings={actionSettings}
