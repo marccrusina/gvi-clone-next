@@ -1,13 +1,11 @@
 'use client'
 import { useState } from 'react'
-import Button from '@/components/Button/Button'
+import Button from '@/components/button/Button'
 import type {
-  ApiButtonData,
   ButtonFillType,
   ButtonSize,
   ButtonVariant,
-} from '@/components/Button/types/button'
-import { transformButtonProps } from '@/components/Button/utils/button-transformer'
+} from '@/components/button/types/button'
 import DemoPageWrapper from '@/components/demo/components/page-wrapper'
 import styles from './page.module.scss'
 
@@ -17,7 +15,7 @@ export default function ButtonDemoPage() {
   const [selectedFillType, setSelectedFillType] =
     useState<ButtonFillType>('fill')
   const [selectedSize, setSelectedSize] = useState<ButtonSize>('small')
-  const [isFullWIdth, setIsFullWIdth] = useState<boolean>(false)
+  const [isFullWidth, setIsFullWidth] = useState<boolean>(false)
 
   // // Example 1: CMS CMS Hero Banner (from home content API)
   // const heroBannerButton: ApiButtonData = {
@@ -93,8 +91,8 @@ export default function ButtonDemoPage() {
         <label>
           <input
             type="checkbox"
-            checked={isFullWIdth}
-            onChange={(e) => setIsFullWIdth(e.target.checked)}
+            checked={isFullWidth}
+            onChange={(e) => setIsFullWidth(e.target.checked)}
           />
           Full Width
         </label>
@@ -105,7 +103,7 @@ export default function ButtonDemoPage() {
           variant={selectedVariant}
           fillType={selectedFillType}
           size={selectedSize}
-          fullwidth={isFullWIdth}
+          fullwidth={isFullWidth}
           labelText={'SCOPRI LA COLLEZIONE'}
         />
       </div>

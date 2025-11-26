@@ -305,7 +305,7 @@ const transformDataElementId = (apiData: ApiButtonData): string | undefined => {
  * Transform label text
  */
 const transformLabelText = (apiData: ApiButtonData): string | undefined => {
-  return apiData?.callToActionText ?? ''
+  return apiData?.callToActionText
 }
 
 /**
