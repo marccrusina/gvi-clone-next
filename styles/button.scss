@@ -1,0 +1,129 @@
+$primary: #0354a6;
+$primary-dark: #023f86;
+$secondary: #f59e0b;
+$secondary-dark: #d48806;
+$black: #000;
+$grey-dark: #4a4a4a;
+$white: #fff;
+$grey-lightest: #f7f7f8;
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 0.625rem 1.5rem;
+  min-width: 120px;
+  width: auto;
+  border-radius: 100px;
+  line-height: 1.43;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: normal;
+  height: 40px;
+  border: 1px solid transparent;
+  transition: background 120ms ease, border 120ms ease, color 120ms ease;
+  color: inherit;
+  background: transparent;
+
+  &--big { height: 48px; }
+  &--small { padding: 0.25rem 0.75rem; min-width: 88px; height: 32px; font-size: 12px; }
+  &--medium { height: 40px; }
+
+  &--full { width: 100%; }
+
+  &.is-loading { pointer-events: none; }
+
+  &.is-disabled,
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    rect { fill: currentColor; }
+  }
+
+  /* Fill variants */
+  &--primary.btn--fill {
+    background: $primary;
+    color: $white;
+    border-color: $primary;
+    &:hover { background: $primary-dark; border-color: $primary-dark; }
+  }
+
+  &--secondary.btn--fill {
+    background: $secondary;
+    color: $grey-dark;
+    border-color: $secondary;
+    &:hover { background: $secondary-dark; border-color: $secondary-dark; }
+  }
+
+  &--tertiary.btn--fill {
+    background: $black;
+    color: $white;
+    border-color: $black;
+    &:hover { background: $grey-dark; border-color: $grey-dark; }
+  }
+
+  &--quaternary.btn--fill {
+    background: $white;
+    color: $grey-dark;
+    border-color: $white;
+    &:hover { background: $grey-lightest; border-color: $grey-lightest; }
+  }
+
+  /* Outline variants */
+  &--primary.btn--outline {
+    background: transparent;
+    color: $primary;
+    border-color: $primary;
+    &:hover { background: rgba(3, 84, 166, 0.1); color: $primary-dark; border-color: $primary-dark; }
+  }
+
+  &--secondary.btn--outline {
+    background: transparent;
+    color: $secondary;
+    border-color: $secondary;
+    &:hover { background: rgba(255,255,255,0.25); color: $secondary-dark; border-color: $secondary-dark; }
+  }
+
+  &--tertiary.btn--outline {
+    background: transparent;
+    color: $grey-dark;
+    border-color: $black;
+    &:hover { background: rgba(0,0,0,0.2); }
+  }
+
+  &--quaternary.btn--outline {
+    background: transparent;
+    color: $white;
+    border-color: $white;
+    &:hover { background: rgba(255,255,255,0.25); color: $white; border-color: $white; }
+  }
+
+  @media (min-width: 600px) {
+    width: fit-content;
+
+    &--full { width: 100%; }
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -22,6 +22,7 @@ export interface ButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement>
   dataElementId?: string
   loading?: boolean
+  labelText?: string
 }
 
 export interface ApiButtonData {
