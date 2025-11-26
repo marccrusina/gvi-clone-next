@@ -17,6 +17,9 @@
       },
       "complexity": {
         "noForEach": "off"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
       }
     }
   },
