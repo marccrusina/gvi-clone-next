@@ -302,6 +302,13 @@ const transformDataElementId = (apiData: ApiButtonData): string | undefined => {
 }
 
 /**
+ * Transform label text
+ */
+const transformLabelText = (apiData: ApiButtonData): string | undefined => {
+  return apiData?.callToActionText
+}
+
+/**
  * Main transformation function - transforms API button data into Button component props
  * Handles various naming conventions and data structures from different APIs
  */
@@ -319,6 +326,7 @@ export const transformButtonProps = (
   props.to = transformTo(apiData)
   props.loading = transformLoading(apiData)
   props.dataElementId = transformDataElementId(apiData)
+  props.labelText = transformLabelText(apiData)
 
   // Transform icons
   const icons = transformIcons(apiData)
