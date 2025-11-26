@@ -339,14 +339,48 @@ export const transformMultipleButtonProps = (
 
 /**
  * Utility function to transform and merge with default props
+ * Only transformed values from actual API data will override defaults
  */
 export const transformButtonPropsWithDefaults = (
   apiData: ApiButtonData,
   defaults: Partial<ButtonProps> = {},
 ): Partial<ButtonProps> => {
   const transformed = transformButtonProps(apiData)
-  const filteredTransformed = Object.fromEntries(
-    Object.entries(transformed).filter(([_key, value]) => value !== undefined),
-  )
-  return { ...defaults, ...filteredTransformed }
+  const result = { ...defaults }
+
+  // Map of API keys to check for each transformed property
+  const apiKeyMap: Partial<Record<keyof ButtonProps, string[]>> = {
+    variant: ['variant', 'type', 'style', 'appearance', 'theme'],
+    fillType: ['style', 'variant', 'appearance'],
+    size: ['size'],
+    fullwidth: ['fullWidth', 'full_width', 'isFullWidth', 'width'],
+    external: ['external', 'isExternal', 'is_external', 'target'],
+    to: ['href', 'url', 'link', 'formattedUrl', 'target'],
+    loading: ['loading', 'isLoading', 'is_loading'],
+    dataElementId: [
+      'dataId',
+      'data_id',
+      'trackingId',
+      'tracking_id',
+      'elementId',
+      'element_id',
+      'id',
+    ],
+    startIcon: ['startIcon', 'icon'],
+    endIcon: ['endIcon', 'icon'],
+  }
+
+  // Only override defaults if the API data has the relevant keys
+  Object.entries(apiKeyMap).forEach(([transformedKey, apiKeys]) => {
+    const hasApiKey = apiKeys.some((key) => key in apiData)
+    if (
+      hasApiKey &&
+      transformed[transformedKey as keyof ButtonProps] !== undefined
+    ) {
+      ;(result as Record<string, unknown>)[transformedKey] =
+        transformed[transformedKey as keyof ButtonProps]
+    }
+  })
+
+  return result
 }
