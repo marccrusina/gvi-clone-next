@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www-gviuatlive.luxgroup.net',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   // Turbopack configuration

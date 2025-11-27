@@ -1,0 +1,20 @@
+@use "@/styles/variables" as *;
+.logoWrapper {
+  display: inline-block;
+  line-height: 1;
+  width: 150px;
+  transition: opacity $transition-duration-base $transition-timing-ease;
+  @media (min-width: 768px) {
+    width: 200px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    opacity: 0.5;
+    cursor: pointer;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
