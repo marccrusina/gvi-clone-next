@@ -21,7 +21,7 @@ const BrandLogo: React.FC<BrandLogoProps> = ({
   className,
 }) => {
   // We combine the default style with any custom className passed in.
-  const logoClassName = `.logoWrapper ${className || ''}`.trim()
+  const logoClassName = `logoWrapper ${className || ''}`.trim()
 
   return (
     <div className={logoClassName}>

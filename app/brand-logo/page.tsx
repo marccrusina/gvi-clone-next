@@ -1,5 +1,7 @@
+'use client'
 import BrandLogo from '@/components/BrandLogo'
-import brandList from './brandlist' // 1. Import the data from the new file
+import DemoPageWrapper from '@/components/demo/components/page-wrapper'
+import brandList from './brandList' // 1. Import the data from the new file
 
 export default function HomePage() {
   // 2. Use the imported brandList directly.
@@ -7,12 +9,10 @@ export default function HomePage() {
   const brands = brandList
 
   return (
-    <main style={{ padding: '2rem' }}>
+    <DemoPageWrapper>
       <header>
         <h1 style={{ marginBottom: '2rem', fontSize: '2rem' }}>Our Brands</h1>
       </header>
-
-      {/* The rest of the component remains the same */}
       <div
         style={{
           display: 'flex',
@@ -21,24 +21,27 @@ export default function HomePage() {
           alignItems: 'center',
         }}
       >
-        {brands.map((brand) => (
-          <div
-            key={brand.id}
-            style={{
-              background: brand.background || 'transparent',
-              padding: '1rem',
-              borderRadius: '8px',
-            }}
-          >
-            <BrandLogo
-              src={brand.logo}
-              alt={`${brand.name} Logo`}
-              width={150} // Using a default width as it's not in the IBrands interface
-              height={50} // Using a default height
-            />
-          </div>
-        ))}
+        {brands.map(
+          (brand, index) =>
+            brand.logo && ( // Check if brand.logo is not null
+              <div
+                key={`${brand.id}-${index}`} // Ensure the key is unique
+                style={{
+                  background: brand.background || 'transparent',
+                  padding: '1rem',
+                  borderRadius: '8px',
+                }}
+              >
+                <BrandLogo
+                  src={brand.logo}
+                  alt={`${brand.name} Logo`}
+                  width={150} // Using a default width as it's not in the IBrands interface
+                  height={50} // Using a default height
+                />
+              </div>
+            ),
+        )}
       </div>
-    </main>
+    </DemoPageWrapper>
   )
 }
