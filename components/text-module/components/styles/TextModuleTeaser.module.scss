@@ -1,0 +1,125 @@
+// Variables
+$spacing-unit: 4px;
+$gap-large: $spacing-unit * 8; // 32px
+$gap-medium: $spacing-unit * 4; // 16px
+$font-size-pretitle: 16px;
+$font-size-title: 28px;
+$line-height-title: 1.14;
+$icon-size: 48px;
+
+// Breakpoints
+$breakpoint-sm: 600px;
+$breakpoint-md: 960px;
+$breakpoint-lg: 1280px;
+
+// Wrapper styles
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @media (min-width: $breakpoint-sm) {
+    // Apply overlay settings to vertical CSS
+    // This would be handled by utility classes or inline styles
+    justify-content: flex-start;
+  }
+
+  & > * {
+    // Apply text align and overlay style color
+    // This would be handled by utility classes or inline styles
+    justify-content: flex-start;
+    text-align: left;
+    align-items: flex-start;
+    color: rgb(43, 46, 49);
+  }
+}
+
+// Content styles
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-large;
+  padding: 40px 16px 40px;
+
+  &RemovePaddingTop {
+    padding-top: 0;
+  }
+
+  @media (min-width: $breakpoint-sm) {
+    padding: $spacing-unit * 10 $spacing-unit * 24;
+
+    &RemovePaddingTop {
+        padding-top: 0;
+    }
+
+  }
+
+  @media (min-width: $breakpoint-md) {
+    padding: $spacing-unit * 12 $spacing-unit * 44;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    padding: $spacing-unit * 16 $spacing-unit * 44;
+  }
+
+  &.removePaddingTop {
+    padding-top: 0;
+  }
+}
+
+// Pre-title styles
+.preTitle {
+  font-size: $font-size-pretitle;
+  margin: 0px;
+  font-family: Poppins, sans-serif;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.14;
+  text-transform: none;
+
+  &Uppercase {
+    text-transform: uppercase;
+  }
+}
+
+// Title styles
+.title {
+  font-size: $font-size-title;
+  line-height: $line-height-title;
+  text-transform: none;
+}
+
+// Text styles
+.text {
+  // Base text styles
+  font-family: Poppins, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgb(43, 46, 49)
+}
+
+// CTA content styles
+.ctaContent {
+  display: flex;
+  width: 100%;
+  margin-top: $gap-medium;
+  justify-content: inherit;
+  gap: $gap-large;
+  flex-direction: column;
+
+  @media (min-width: $breakpoint-md) {
+    flex-direction: row;
+  }
+}
+
+// Icon content styles
+.iconContent {
+  display: flex;
+  margin-bottom: $gap-medium;
+
+  svg {
+    height: $icon-size;
+    width: $icon-size;
+  }
+}
