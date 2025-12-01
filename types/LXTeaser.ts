@@ -62,12 +62,11 @@ export interface ITeaserCallToAction {
   callToActionText?: string
   callToActionHash?: string
   style: 'arn-cta--primary' | 'arn-cta--secondary' | 'arn-cta--tertiary'
-  target: unknown
-  // | ICMChannel
+  target: // | ICMChannel
   // | ICMExternalPage
-  // | ICMProductTeaser
-  // | ICMExternalChannel
-  // | ICMExternalProduct
+    | ICMProductTeaser
+    // | ICMExternalChannel
+    | ICMExternalProduct
   // | ICMDownload
   // | ICMExternalLink
   // | ICMArticle

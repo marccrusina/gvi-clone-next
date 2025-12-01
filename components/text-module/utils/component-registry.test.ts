@@ -84,7 +84,10 @@ describe('component-registry', () => {
       const transformed = componentRegistry.LXTeaser.transformer(item)
 
       expect(transformed).toEqual({
+        center: false,
         icon: 'test-icon',
+        isCompact: false,
+        light: false,
         preTitle: 'Test Title',
         title: '',
         text: 'Test Text',

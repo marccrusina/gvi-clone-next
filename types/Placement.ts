@@ -6,7 +6,7 @@ import type { ICMCollection } from './CMCollection'
 // import { ICMExternalPage } from './CMExternalPage'
 import type { ICMExternalProduct } from './CMExternalProduct'
 import type { ICMProductTeaser } from './CMProductTeaser'
-import { ILXTeaser, type ITeaserCallToAction } from './LXTeaser'
+import type { ILXTeaser, ITeaserCallToAction } from './LXTeaser'
 // import { ICMHtml } from './CMHtml'
 // import { ICMExternalChannel } from './CMExternalChannel'
 import { type IMedia, IPictureMedia, type IVideoMedia } from './Media'
@@ -35,6 +35,7 @@ export interface IPlacement<ItemType = IPlacementItem> {
   currentProduct?: ServerProduct
   contentPlacements?: IPlacement[]
   title?: string
+  media?: unknown
 }
 
 export interface IBasePlacementItem {
@@ -52,7 +53,7 @@ export type IPlacementItem =
   //   | ICMExternalPage
   | ICMExternalProduct
   | ICMProductTeaser
-//   | ILXTeaser
+  | ILXTeaser
 //   | LXDynamicContent
 //   | ICMTeaser
 //   | ICMHtml
@@ -62,8 +63,8 @@ export type IPlacementItem =
 //   | ICMPlaceholder
 //   | ICMAlgolia
 
-// export const isLXTeaser = (item: IPlacementItem): item is ILXTeaser =>
-//   (item as ILXTeaser).type === 'LXTeaser'
+export const isLXTeaser = (item: IPlacementItem): item is ILXTeaser =>
+  (item as ILXTeaser).type === 'LXTeaser'
 
 // export const isCMCollection = (item: IPlacementItem): item is ICMCollection =>
 //   item.type === 'CMCollection'

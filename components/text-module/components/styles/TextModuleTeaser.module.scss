@@ -38,7 +38,7 @@ $breakpoint-lg: 1280px;
 .content {
   display: flex;
   flex-direction: column;
-  gap: $gap-large;
+  gap: 8px; 
   padding: 40px 16px 40px;
 
   &RemovePaddingTop {
@@ -94,9 +94,10 @@ $breakpoint-lg: 1280px;
 .text {
   // Base text styles
   font-family: Poppins, sans-serif;
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.5;
-  color: rgb(43, 46, 49)
+  color: rgb(43, 46, 49);
+  margin-bottom: 24px;
 }
 
 // CTA content styles
@@ -107,6 +108,7 @@ $breakpoint-lg: 1280px;
   justify-content: inherit;
   gap: $gap-large;
   flex-direction: column;
+
 
   @media (min-width: $breakpoint-md) {
     flex-direction: row;
@@ -122,4 +124,17 @@ $breakpoint-lg: 1280px;
     height: $icon-size;
     width: $icon-size;
   }
+}
+
+.compact {
+  padding: 0;
+}
+
+.light {
+  color: white;
+}
+
+.center {
+  text-align: center;
+  justify-content: center;
 }

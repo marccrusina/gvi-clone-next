@@ -1,0 +1,26 @@
+.wrapper {
+  padding: 0 32px; // theme.spacing(0, 4) assuming 8px spacing unit
+
+  @media (min-width: 960px) { // md breakpoint, adjust if your theme uses a different value
+    position: absolute;
+    max-width: 36%;
+    height: 100%;
+    padding: 64px; // theme.spacing(16)
+    z-index: 1;
+    top: 0;
+    word-break: 'break-word';
+    display: flex;
+    align-items: center;
+  }
+}
+.article {
+    height: calc(100% - 22px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px; // theme.spacing(2) assuming 8px spacing unit
+  justify-content: flex-end;
+
+  @media (min-width: 960px) { // md breakpoint, adjust if needed
+    height: unset;
+  }
+}

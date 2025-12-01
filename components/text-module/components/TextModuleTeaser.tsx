@@ -30,10 +30,22 @@ const TextModuleTeaser: React.FC<{
   title?: string
   text?: string
   callToActionSettings?: ITeaserCallToAction[]
-}> = ({ icon, preTitle, title, text, callToActionSettings }) => {
+  isCompact?: boolean
+  light?: boolean
+  center?: boolean
+}> = ({
+  icon,
+  preTitle,
+  title,
+  text,
+  callToActionSettings,
+  isCompact,
+  center = false,
+  light,
+}) => {
   return (
     <article className={clsx(styles.wrapper)}>
-      <div className={clsx(styles.content)}>
+      <div className={clsx(styles.content, { [styles.compact]: isCompact })}>
         {icon && (
           <div className={styles.iconContent}>
             {/* <CmsIcon teaserIcon={teaserIcon} /> */}
@@ -43,6 +55,8 @@ const TextModuleTeaser: React.FC<{
           <h2
             className={clsx(styles.preTitle, {
               [styles.preTitleUppercased]: false,
+              [styles.light]: light,
+              [styles.center]: center,
             })}
           >
             {preTitle}
@@ -51,18 +65,25 @@ const TextModuleTeaser: React.FC<{
         {title && <h2 className={styles.title}>{title}</h2>}
         {text && (
           <div
-            className={styles.text}
+            className={clsx(styles.text, {
+              [styles.light]: light,
+              [styles.center]: center,
+            })}
             dangerouslySetInnerHTML={{ __html: text }}
           />
         )}
         {callToActionSettings && callToActionSettings.length > 0 && (
-          <div className={styles.ctaContent}>
+          <div
+            className={clsx(styles.ctaContent, {
+              [styles.center]: center,
+            })}
+          >
             {callToActionSettings.map((actionSetting: ITeaserCallToAction) => (
               <Button
                 key={actionSetting.callToActionHash}
                 variant={'primary'}
                 fillType={'fill'}
-                size={'medium'}
+                size={'big'}
                 fullwidth={false}
                 labelText={actionSetting.callToActionText}
               />

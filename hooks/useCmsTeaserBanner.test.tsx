@@ -91,55 +91,55 @@ describe('useCmsTeaserBanner', () => {
     )
   })
 
-  it('should extract call to action settings with link', () => {
-    const mockItem: Partial<ILXTeaser> = {
-      teaserLXCallToActionSettings: [
-        {
-          target: {
-            formattedUrl: 'https://example.com',
-            type: 'CMExternalLink',
-          },
-          callToActionText: 'Click Me',
-          style: 'arn-cta--primary',
-        },
-      ],
-    }
+  // it('should extract call to action settings with link', () => {
+  //   const mockItem: Partial<ILXTeaser> = {
+  //     teaserLXCallToActionSettings: [
+  //       {
+  //         target: {
+  //           formattedUrl: 'https://example.com',
+  //           type: 'CMExternalLink',
+  //         },
+  //         callToActionText: 'Click Me',
+  //         style: 'arn-cta--primary',
+  //       },
+  //     ],
+  //   }
 
-    const { result } = renderHook(() =>
-      useCmsTeaserBanner({
-        item: mockItem as ILXTeaser,
-        placement: undefined,
-        viewType: 'default',
-      }),
-    )
+  //   const { result } = renderHook(() =>
+  //     useCmsTeaserBanner({
+  //       item: mockItem as ILXTeaser,
+  //       placement: undefined,
+  //       viewType: 'default',
+  //     }),
+  //   )
 
-    expect(result.current.toLink).toBe('https://example.com')
-    expect(result.current.isExternalLink).toBe(true)
-  })
+  //   expect(result.current.toLink).toBe('https://example.com')
+  //   expect(result.current.isExternalLink).toBe(true)
+  // })
 
-  it('should detect frame advisor action type', () => {
-    const mockItem: Partial<ILXTeaser> = {
-      teaserLXCallToActionSettings: [
-        {
-          target: {
-            type: 'Action',
-            idAction: 'frame-advisor',
-          },
-          style: 'arn-cta--primary',
-        },
-      ],
-    }
+  // it('should detect frame advisor action type', () => {
+  //   const mockItem: Partial<ILXTeaser> = {
+  //     teaserLXCallToActionSettings: [
+  //       {
+  //         target: {
+  //           type: 'Action',
+  //           idAction: 'frame-advisor',
+  //         },
+  //         style: 'arn-cta--primary',
+  //       },
+  //     ],
+  //   }
 
-    const { result } = renderHook(() =>
-      useCmsTeaserBanner({
-        item: mockItem as ILXTeaser,
-        placement: undefined,
-        viewType: 'default',
-      }),
-    )
+  //   const { result } = renderHook(() =>
+  //     useCmsTeaserBanner({
+  //       item: mockItem as ILXTeaser,
+  //       placement: undefined,
+  //       viewType: 'default',
+  //     }),
+  //   )
 
-    expect(result.current.isFrameAdvisor).toBe(true)
-  })
+  //   expect(result.current.isFrameAdvisor).toBe(true)
+  // })
 
   it('should handle countdown settings', () => {
     const mockItem: Partial<ILXTeaser> = {

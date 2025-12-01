@@ -11,7 +11,13 @@ export interface ComponentConfig<T = {}> {
       teaserText2?: string
       teaserLXCallToActionSettings?: unknown[]
     },
-    context?: { viewType?: string; teaserIndex?: number },
+    context?: {
+      viewType?: string
+      teaserIndex?: number
+      isCompact?: boolean
+      light?: boolean
+      center?: boolean
+    },
   ) => unknown
 }
 
@@ -23,6 +29,9 @@ export const componentRegistry: Record<
       title?: string
       text?: string
       callToActionSettings?: unknown[]
+      isCompact?: boolean
+      light?: boolean
+      center?: boolean
     }>
   | ComponentConfig<{
       title: string
@@ -41,6 +50,9 @@ export const componentRegistry: Record<
       title: '',
       text: item?.teaserText2 ?? '',
       callToActionSettings: item?.teaserLXCallToActionSettings ?? [],
+      isCompact: context?.isCompact ?? false,
+      light: context?.light ?? false,
+      center: context?.center ?? false,
     }),
   },
   CMArticle: {

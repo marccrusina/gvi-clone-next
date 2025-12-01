@@ -34,7 +34,7 @@ export const imageCrops: ImageCrops = {
       width: 2560,
     },
     tabletL: {
-      crop: 'landscape_ratio32x13',
+      crop: 'landscape_ratiox13',
       width: 1843,
     },
     tabletP: {
